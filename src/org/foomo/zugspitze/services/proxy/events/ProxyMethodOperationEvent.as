@@ -7,13 +7,13 @@ package org.foomo.zugspitze.services.proxy.events
 	import org.foomo.zugspitze.events.OperationEvent;
 	import org.foomo.zugspitze.operations.IOperation;
 
-	public class ProxyMethodCallOperationEvent extends OperationEvent
+	public class ProxyMethodOperationEvent extends OperationEvent
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function ProxyMethodCallOperationEvent(type:String, operation:IOperation)
+		public function ProxyMethodOperationEvent(type:String, operation:IOperation)
 		{
 			super(type, operation);
 		}
@@ -47,7 +47,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		override public function clone():Event
 		{
-			return new ProxyMethodCallOperationEvent(this.type, this.operation);
+			return new ProxyMethodOperationEvent(this.type, this.operation);
 		}
 
 		/**

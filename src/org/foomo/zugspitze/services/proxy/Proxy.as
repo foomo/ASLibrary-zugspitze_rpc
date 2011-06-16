@@ -50,10 +50,14 @@ package org.foomo.zugspitze.services.proxy
 			this.rpcClient.endPoint = value
 		}
 
+		//-----------------------------------------------------------------------------------------
+		// ~ Zugspitze internal methods
+		//-----------------------------------------------------------------------------------------
+
 		/**
 		 *
 		 */
-		public function sendMethodCall(methodCall:ProxyMethodCall):*
+		zugspitze_internal function sendMethodCall(methodCall:ProxyMethodCall):*
 		{
 			methodCall.zugspitze_internal::token = this.rpcClient.addMethodCall(methodCall.methodName, methodCall.arguments);
 			methodCall.zugspitze_internal::transport = this.rpcClient.sendCall();
