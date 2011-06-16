@@ -16,8 +16,8 @@ package org.foomo.zugspitze.services.rpc.events
 		// ~ Constants
 		//-----------------------------------------------------------------------------------------
 
-		public static const METHOD_CALL_COMPLETE:String = 'methodCallComplete';
-		public static const METHOD_CALL_ERROR:String 	= 'methodCallError';
+		public static const METHOD_CALL_TOKEN_COMPLETE:String = 'methodCallTokenComplete';
+		public static const METHOD_CALL_TOKEN_ERROR:String 	= 'methodCallTokenError';
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables

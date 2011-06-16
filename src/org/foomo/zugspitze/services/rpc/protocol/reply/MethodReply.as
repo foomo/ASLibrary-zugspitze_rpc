@@ -1,7 +1,7 @@
 package org.foomo.zugspitze.services.rpc.protocol.reply
 {
 	//[ExcludeClass]
-	[RemoteClass(alias='Rad.Services.RPC.Protocol.Reply.MethodReply')]
+	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Reply.MethodReply')]
 
 	/**
 	 * @private
@@ -19,7 +19,7 @@ package org.foomo.zugspitze.services.rpc.protocol.reply
 		/**
 		 * return value
 		 */
-		public var value:Object;
+		public var value:*;
 		/**
 		 * messages
 		 */

@@ -1,4 +1,4 @@
-package org.foomo.zugspitze.services.events
+package org.foomo.zugspitze.services.proxy.events
 {
 	import org.foomo.zugspitze.services.rpc.protocol.reply.MethodReply;
 
@@ -7,13 +7,13 @@ package org.foomo.zugspitze.services.events
 	import org.foomo.zugspitze.events.OperationEvent;
 	import org.foomo.zugspitze.operations.IOperation;
 
-	public class RPCClientMethodCallOperationEvent extends OperationEvent
+	public class ProxyMethodCallOperationEvent extends OperationEvent
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function RPCClientMethodCallOperationEvent(type:String, operation:IOperation)
+		public function ProxyMethodCallOperationEvent(type:String, operation:IOperation)
 		{
 			super(type, operation);
 		}
@@ -27,7 +27,7 @@ package org.foomo.zugspitze.services.events
 		 */
 		public function get result():MethodReply
 		{
-			return MethodReply(this.operation.result);
+			return this.operationResult;
 		}
 
 		/**
@@ -35,7 +35,7 @@ package org.foomo.zugspitze.services.events
 		 */
 		public function get error():*
 		{
-			return this.operation.error;
+			return this.operationError;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -47,7 +47,7 @@ package org.foomo.zugspitze.services.events
 		 */
 		override public function clone():Event
 		{
-			return new RPCClientMethodCallOperationEvent(this.type, this.operation);
+			return new ProxyMethodCallOperationEvent(this.type, this.operation);
 		}
 
 		/**
@@ -55,7 +55,7 @@ package org.foomo.zugspitze.services.events
 		 */
 		override public function toString():String
 		{
-			return formatToString('RPCClientMethodCallOpeationEvent');
+			return formatToString('ProxyMethodCallOperationEvent');
 		}
 	}
 }

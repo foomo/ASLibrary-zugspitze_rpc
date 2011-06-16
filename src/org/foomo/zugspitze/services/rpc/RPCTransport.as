@@ -1,10 +1,18 @@
 package org.foomo.zugspitze.services.rpc
 {
+	import flash.events.ErrorEvent;
+	import flash.events.Event;
+	import flash.events.IOErrorEvent;
 	import flash.net.ObjectEncoding;
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLStream;
 	import flash.utils.ByteArray;
+
+	import org.foomo.zugspitze.services.rpc.protocol.Reply;
+	import org.foomo.zugspitze.services.rpc.protocol.reply.MethodReply;
+
+	[Event(name="networkError", type="flash.events.IOErrorEvent")]
 
 	/**
 	 * AMF based flash cient to PHP server communication over HTTP.
@@ -33,6 +41,7 @@ package org.foomo.zugspitze.services.rpc
 		{
 			this.endPoint = endPoint;
 			this.objectEncoding = ObjectEncoding.AMF0;
+			this.addEventListener(Event.COMPLETE, this.completeHandler);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -62,9 +71,13 @@ package org.foomo.zugspitze.services.rpc
 		/**
 		 *
 		 */
-		public function get reply():*
+		public function readReply():Reply
 		{
-			return this.readObject();
+			if (this.bytesAvailable > 0) {
+				return this.readObject();
+			} else {
+				return null;
+			}
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -79,7 +92,7 @@ package org.foomo.zugspitze.services.rpc
 			this._data = data;
 
 			var bytes:ByteArray = new ByteArray;
-			bytes.objectEncoding = this.objectEncoding
+			bytes.objectEncoding = ObjectEncoding.AMF0;
 			bytes.writeObject(this._data);
 
 			var request:URLRequest = new URLRequest(this.endPoint);
@@ -88,6 +101,23 @@ package org.foomo.zugspitze.services.rpc
 			request.data = bytes;
 
 			this.load(request);
+		}
+
+		//-----------------------------------------------------------------------------------------
+		// ~ Private eventhandler
+		//-----------------------------------------------------------------------------------------
+
+		/**
+		 * Catch the complete event first to validate the transport reply
+		 * TODO: check if this works as expected
+		 */
+		private function completeHandler(event:Event):void
+		{
+			if (this.bytesAvailable == 0) {
+				event.stopImmediatePropagation();
+				event.stopPropagation();
+				this.dispatchEvent(new IOErrorEvent(IOErrorEvent.NETWORK_ERROR, false, false, 'Received emtpy reply'));
+			}
 		}
 	}
 }

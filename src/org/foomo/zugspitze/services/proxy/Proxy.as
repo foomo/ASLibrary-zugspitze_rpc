@@ -1,13 +1,10 @@
 package org.foomo.zugspitze.services.proxy
 {
-	import org.foomo.zugspitze.services.events.ProxyMethodEvent;
-	import org.foomo.zugspitze.services.rpc.RPCClient;
-
 	import flash.events.EventDispatcher;
 
-	[Event(name="methodCallError", type="org.foomo.zugspitze.services.events.ProxyMethodEvent")]
-	[Event(name="methodCallComplete", type="org.foomo.zugspitze.services.events.ProxyMethodEvent")]
-	[Event(name="methodCallProgress", type="org.foomo.zugspitze.services.events.ProxyMethodEvent")]
+	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.rpc.RPCClient;
+	import org.foomo.zugspitze.zugspitze_internal;
 
 	public class Proxy extends EventDispatcher
 	{
@@ -53,16 +50,14 @@ package org.foomo.zugspitze.services.proxy
 			this.rpcClient.endPoint = value
 		}
 
-		//-----------------------------------------------------------------------------------------
-		// ~ Protected methods
-		//-----------------------------------------------------------------------------------------
-
 		/**
 		 *
 		 */
-		protected function dispatchProxyMethodEvent(event:ProxyMethodEvent):Boolean
+		public function sendMethodCall(methodCall:ProxyMethodCall):*
 		{
-			return this.dispatchEvent(event);
+			methodCall.zugspitze_internal::token = this.rpcClient.addMethodCall(methodCall.methodName, methodCall.arguments);
+			methodCall.zugspitze_internal::transport = this.rpcClient.sendCall();
+			return methodCall;
 		}
 	}
 }

@@ -1,7 +1,7 @@
 package org.foomo.zugspitze.services.rpc.protocol.reply
 {
 	//[ExcludeClass]
-	[RemoteClass(alias='Rad.Services.RPC.Protocol.Reply.Exception')]
+	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Reply.Exception')]
 
 	/**
 	 * @private

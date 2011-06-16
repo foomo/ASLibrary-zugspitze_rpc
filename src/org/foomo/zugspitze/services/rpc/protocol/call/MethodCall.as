@@ -1,7 +1,7 @@
 package org.foomo.zugspitze.services.rpc.protocol.call
 {
 	//[ExcludeClass]
-	[RemoteClass(alias='Rad.Services.RPC.Protocol.Call.MethodCall')]
+	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Call.MethodCall')]
 
 	/**
 	 * @private
