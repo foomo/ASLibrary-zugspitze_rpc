@@ -55,7 +55,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		override public function toString():String
 		{
-			return formatToString('ProxyMethodCallOperationEvent');
+			return formatToString('ProxyMethodOperationEvent');
 		}
 	}
 }
