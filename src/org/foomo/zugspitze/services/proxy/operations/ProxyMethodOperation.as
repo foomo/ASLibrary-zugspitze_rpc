@@ -1,19 +1,10 @@
 package org.foomo.zugspitze.services.proxy.operations
 {
-	import flash.events.Event;
-	import flash.events.IOErrorEvent;
-	import flash.events.ProgressEvent;
-	import flash.events.SecurityErrorEvent;
-
 	import org.foomo.zugspitze.core.IUnload;
 	import org.foomo.zugspitze.operations.Operation;
-	import org.foomo.zugspitze.services.proxy.Proxy;
 	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.services.proxy.events.ProxyMethodCallEvent;
 	import org.foomo.zugspitze.services.proxy.events.ProxyMethodOperationEvent;
-	import org.foomo.zugspitze.services.rpc.RPCMethodCallToken;
-	import org.foomo.zugspitze.services.rpc.RPCTransport;
-	import org.foomo.zugspitze.services.rpc.events.RPCMethodCallEvent;
 
 	public class ProxyMethodOperation extends Operation implements IUnload
 	{
@@ -45,9 +36,9 @@ package org.foomo.zugspitze.services.proxy.operations
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * String | Exception
 		 */
-		public function get error():String
+		public function get error():*
 		{
 			return this.operationError;
 		}
@@ -88,8 +79,7 @@ package org.foomo.zugspitze.services.proxy.operations
 		 */
 		protected function methodCall_proxyMethodCallCompleteHandler(event:ProxyMethodCallEvent):void
 		{
-			// TODO: check if this is correct
-			if (event.methodCall.methodReply.exception) {
+			if (event.methodCall.methodReply.exception != null) {
 				this.dispatchOperationErrorEvent(event.methodCall.methodReply.exception);
 			} else {
 				this.dispatchOperationCompleteEvent(event.methodCall.methodReply.value);

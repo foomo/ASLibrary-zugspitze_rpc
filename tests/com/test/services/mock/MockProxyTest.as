@@ -1,19 +1,20 @@
 package com.test.services.mock
 {
-	import avmplus.getQualifiedClassName;
-
+	import com.test.services.mock.calls.GetComplexTypeMessageCall;
+	import com.test.services.mock.events.CustomExceptionEvent;
 	import com.test.services.mock.events.ExceptionEvent;
 	import com.test.services.mock.events.GetBooleanCallEvent;
-	import com.test.services.mock.events.GetExceptionCallEvent;
+	import com.test.services.mock.events.GetComplexTypeCallEvent;
+	import com.test.services.mock.events.GetComplexTypeMessageCallEvent;
 	import com.test.services.mock.events.GetIntCallEvent;
+	import com.test.services.mock.events.GetMessageCallEvent;
+	import com.test.services.mock.events.GetMessagesCallEvent;
 	import com.test.services.mock.events.GetNumberCallEvent;
 	import com.test.services.mock.events.GetObjectCallEvent;
 	import com.test.services.mock.events.GetSharedObjectCallEvent;
-	import com.test.services.mock.events.GetStandardTypesCallEvent;
 	import com.test.services.mock.events.GetStringCallEvent;
 	import com.test.services.shared.SharedObject;
 
-	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
 
 	import flexunit.framework.Assert;
@@ -21,6 +22,7 @@ package com.test.services.mock
 	import mx.utils.ObjectUtil;
 
 	import org.flexunit.async.Async;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
 	import org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent;
 
 	public class MockProxyTest
@@ -120,7 +122,7 @@ package com.test.services.mock
 		[Test(async)]
 		public function testGetStandardTypes():void
 		{
-			Async.handleEvent(this, this.proxy.getStandardTypes(), GetStandardTypesCallEvent.GET_STANDARD_TYPES_CALL_COMPLETE, function(event:GetStandardTypesCallEvent, ... parms):void {
+			Async.handleEvent(this, this.proxy.getComplexType(), GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_COMPLETE, function(event:GetComplexTypeCallEvent, ... parms):void {
 				Assert.assertTrue(event.result.typeBool is Boolean);
 				Assert.assertTrue(event.result.typeBoolArray is Array);
 				Assert.assertEquals(event.result.typeBoolArray[0], true);
@@ -194,7 +196,6 @@ package com.test.services.mock
 		[Test(async)]
 		public function testGetException():void
 		{
-			this.proxy.endPoint = END_POINT;
 			Async.handleEvent(this, this.proxy.getException(), ExceptionEvent.EXCEPTION, function(event:ExceptionEvent, ... parms):void {
 				Assert.assertEquals(event.code, 500);
 				Assert.assertEquals(event.message, 'This is a mock exception');
@@ -202,12 +203,44 @@ package com.test.services.mock
 		}
 
 		[Test(async)]
-		public function testGetAnotherException():void
+		public function testGetSameException():void
 		{
-			this.proxy.endPoint = END_POINT;
-			Async.handleEvent(this, this.proxy.getAnotherException(), ExceptionEvent.EXCEPTION, function(event:ExceptionEvent, ... parms):void {
+			Async.handleEvent(this, this.proxy.getSameException(), ExceptionEvent.EXCEPTION, function(event:ExceptionEvent, ... parms):void {
 				Assert.assertEquals(event.code, 501);
 				Assert.assertEquals(event.message, 'This is a second mock exception of the same type');
+			});
+		}
+
+		[Test(async)]
+		public function testGetCustomException():void
+		{
+			Async.handleEvent(this, this.proxy.getCustomException(), CustomExceptionEvent.CUSTOM_EXCEPTION, function(event:CustomExceptionEvent, ... parms):void {
+				Assert.assertEquals(event.note, 'Hear my note!');
+			});
+		}
+
+		[Test(async)]
+		public function testGetMessage():void
+		{
+			Async.handleEvent(this, this.proxy.getMessage(), GetMessageCallEvent.GET_MESSAGE_CALL_COMPLETE, function(event:GetMessageCallEvent, ... parms):void {
+				Assert.assertEquals(event.messages[0], 'This is a single service message');
+			});
+		}
+
+		[Test(async)]
+		public function testGetMessages():void
+		{
+			Async.handleEvent(this, this.proxy.getMessages(), GetMessagesCallEvent.GET_MESSAGES_CALL_COMPLETE, function(event:GetMessagesCallEvent, ... parms):void {
+				Assert.assertEquals(event.messages[0], 'This is the first message');
+				Assert.assertEquals(event.messages[1], 'This is the second message');
+			});
+		}
+
+		[Test(async)]
+		public function testGetComplexTypeMessages():void
+		{
+			Async.handleEvent(this, this.proxy.getComplexTypeMessage(), GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_COMPLETE, function(event:GetComplexTypeMessageCallEvent, ... parms):void {
+				Assert.assertTrue(event.messages[0] is ComplexTypeMessage);
 			});
 		}
 	}

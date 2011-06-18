@@ -76,6 +76,14 @@ package org.foomo.zugspitze.services.proxy.events
 			return this._methodCall.error;
 		}
 
+		/**
+		 * Proxy call messages
+		 */
+		public function get messages():Array
+		{
+			return this._methodCall.messages;
+		}
+
 		//-----------------------------------------------------------------------------------------
 		// ~ Overriden methods
 		//-----------------------------------------------------------------------------------------
