@@ -13,7 +13,7 @@ package org.foomo.zugspitze.services.proxy.operations
 	import org.foomo.zugspitze.services.proxy.events.ProxyMethodOperationEvent;
 	import org.foomo.zugspitze.services.rpc.RPCMethodCallToken;
 	import org.foomo.zugspitze.services.rpc.RPCTransport;
-	import org.foomo.zugspitze.services.rpc.events.RPCMethodCallTokenEvent;
+	import org.foomo.zugspitze.services.rpc.events.RPCMethodCallEvent;
 
 	public class ProxyMethodOperation extends Operation implements IUnload
 	{

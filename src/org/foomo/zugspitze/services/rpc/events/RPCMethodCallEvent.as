@@ -10,14 +10,14 @@ package org.foomo.zugspitze.services.rpc.events
 	/**
 	 *
 	 */
-	public class RPCMethodCallTokenEvent extends Event
+	public class RPCMethodCallEvent extends Event
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constants
 		//-----------------------------------------------------------------------------------------
 
-		public static const METHOD_CALL_TOKEN_COMPLETE:String = 'methodCallTokenComplete';
-		public static const METHOD_CALL_TOKEN_ERROR:String 	= 'methodCallTokenError';
+		public static const RPC_METHOD_CALL_COMPLETE:String = 'rpcMethodCallComplete';
+		public static const RPC_METHOD_CALL_ERROR:String 	= 'rpcMethodCallError';
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
@@ -36,10 +36,10 @@ package org.foomo.zugspitze.services.rpc.events
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function RPCMethodCallTokenEvent(type:String, methodReply:MethodReply=null, methodCall:MethodCall=null)
+		public function RPCMethodCallEvent(type:String, methodCall:MethodCall, methodReply:MethodReply=null)
 		{
-			this.methodReply = methodReply;
 			this.methodCall	= methodCall;
+			this.methodReply = methodReply;
 
 			super(type);
 		}
@@ -53,7 +53,15 @@ package org.foomo.zugspitze.services.rpc.events
 		 */
 		override public function clone():Event
 		{
-			return new RPCMethodCallTokenEvent(this.type, this.methodReply, this.methodCall);
+			return new RPCMethodCallEvent(this.type, this.methodCall, this.methodReply);
+		}
+
+		/**
+		 * @inherit
+		 */
+		public override function toString():String
+		{
+			return formatToString("RPCMethodCallEvent");
 		}
 	}
 }

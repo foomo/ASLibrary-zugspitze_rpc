@@ -1,18 +1,17 @@
 package org.foomo.zugspitze.services.rpc
 {
-	import flash.events.ErrorEvent;
 	import flash.events.Event;
-	import flash.events.IOErrorEvent;
 	import flash.net.ObjectEncoding;
 	import flash.net.URLRequest;
 	import flash.net.URLRequestMethod;
 	import flash.net.URLStream;
 	import flash.utils.ByteArray;
 
+	import org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent;
 	import org.foomo.zugspitze.services.rpc.protocol.Reply;
-	import org.foomo.zugspitze.services.rpc.protocol.reply.MethodReply;
 
-	[Event(name="networkError", type="flash.events.IOErrorEvent")]
+	[Event(name="nullError", type="org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent")]
+	[Event(name="replyError", type="org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent")]
 
 	/**
 	 * AMF based flash cient to PHP server communication over HTTP.
@@ -25,13 +24,17 @@ package org.foomo.zugspitze.services.rpc
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * Call endpoint
 		 */
 		protected var _endPoint:String;
 		/**
-		 *
+		 * The send object data
 		 */
 		protected var _data:Object;
+		/**
+		 * The reply object
+		 */
+		protected var _reply:Reply;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
@@ -49,7 +52,7 @@ package org.foomo.zugspitze.services.rpc
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * Call endpoint
 		 */
 		public function get endPoint():String
 		{
@@ -61,7 +64,7 @@ package org.foomo.zugspitze.services.rpc
 		}
 
 		/**
-		 *
+		 * The send object data
 		 */
 		public function get data():Object
 		{
@@ -69,15 +72,11 @@ package org.foomo.zugspitze.services.rpc
 		}
 
 		/**
-		 *
+		 * The reply object
 		 */
-		public function readReply():Reply
+		public function get reply():Reply
 		{
-			if (this.bytesAvailable > 0) {
-				return this.readObject();
-			} else {
-				return null;
-			}
+			return this._reply;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -85,7 +84,7 @@ package org.foomo.zugspitze.services.rpc
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 * send data
+		 * Send data to given endpoint
 		 */
 		public function send(data:Object):void
 		{
@@ -109,14 +108,20 @@ package org.foomo.zugspitze.services.rpc
 
 		/**
 		 * Catch the complete event first to validate the transport reply
-		 * TODO: check if this works as expected
 		 */
 		private function completeHandler(event:Event):void
 		{
 			if (this.bytesAvailable == 0) {
+				this.dispatchEvent(new RPCTransportErrorEvent(RPCTransportErrorEvent.NULL_ERROR, 'Available bytes are 0'));
 				event.stopImmediatePropagation();
 				event.stopPropagation();
-				this.dispatchEvent(new IOErrorEvent(IOErrorEvent.NETWORK_ERROR, false, false, 'Received emtpy reply'));
+			} else {
+				this._reply = this.readObject() as Reply;
+				if (this._reply == null) {
+					this.dispatchEvent(new RPCTransportErrorEvent(RPCTransportErrorEvent.REPLY_ERROR, 'Read object is not a Reply'));
+					event.stopImmediatePropagation();
+					event.stopPropagation();
+				}
 			}
 		}
 	}

@@ -2,18 +2,17 @@ package org.foomo.zugspitze.services.rpc.events
 {
 	import flash.events.Event;
 
-	/**
-	 *
-	 */
-	public class RPCTransportEvent extends Event
+	import org.foomo.zugspitze.services.rpc.RPCTransport;
+
+	public class RPCClientEvent extends Event
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constants
 		//-----------------------------------------------------------------------------------------
 
-		public static const TRANSPORT_COMPLETE:String 	= 'transportComplete';
-		public static const TRANSPORT_PROGRESS:String 	= 'transportProgress';
-		public static const TRANSPORT_ERROR:String 		= 'transportError';
+		public static const RPC_TRANSPORT_COMPLETE:String 	= "rpcTransportComplete";
+		public static const RPC_TRANSPORT_PROGRESS:String 	= "rpcTransportProgress";
+		public static const RPC_TRANSPORT_OPEN:String 		= "rpcTransportOpen";
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
@@ -22,21 +21,29 @@ package org.foomo.zugspitze.services.rpc.events
 		/**
 		 *
 		 */
-		public var resultData:Object;
-		/**
-		 *
-		 */
-		public var requestData:Object;
+		private var _transport:RPCTransport;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function RPCTransportEvent(type:String, requestData:Object, resultData:Object=null)
+		public function RPCClientEvent(type:String, transport:RPCTransport)
 		{
-			this.requestData 	= requestData;
-			this.resultData 	= resultData;
-			super(type, false, false);
+			this._transport = transport;
+
+			super(type);
+		}
+
+		//-----------------------------------------------------------------------------------------
+		// ~ Public methods
+		//-----------------------------------------------------------------------------------------
+
+		/**
+		 *
+		 */
+		public function get transport():RPCTransport
+		{
+			return _transport;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -48,7 +55,15 @@ package org.foomo.zugspitze.services.rpc.events
 		 */
 		override public function clone():Event
 		{
-			return new RPCTransportEvent(this.type, this.resultData, this.requestData);
+			return new RPCClientEvent(this.type, this.transport);
+		}
+
+		/**
+		 * @inherit
+		 */
+		override public function toString():String
+		{
+			return formatToString("RPCClientEvent", "transport");
 		}
 	}
 }
