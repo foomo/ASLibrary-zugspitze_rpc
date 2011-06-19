@@ -31,6 +31,10 @@ package org.foomo.zugspitze.services.proxy.operations
 		 *
 		 */
 		protected var _proxy:Proxy;
+		/**
+		 *
+		 */
+		protected var _messages:Array;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
@@ -60,6 +64,14 @@ package org.foomo.zugspitze.services.proxy.operations
 		public function get error():*
 		{
 			return this.untypedError;
+		}
+
+		/**
+		 *
+		 */
+		public function get messages():Array
+		{
+			return this._messages;
 		}
 
 		/**
@@ -101,6 +113,7 @@ package org.foomo.zugspitze.services.proxy.operations
 		 */
 		protected function methodCall_proxyMethodCallCompleteHandler(event:ProxyMethodCallEvent):void
 		{
+			this._messages = event.messages;
 			this.dispatchOperationCompleteEvent(event.untypedResult);
 		}
 
@@ -110,6 +123,38 @@ package org.foomo.zugspitze.services.proxy.operations
 		protected function methodCall_proxyMethodCallExceptionHandler(event:Event):void
 		{
 			this.dispatchOperationErrorEvent(this._methodCall.methodReply.exception);
+		}
+
+		//-----------------------------------------------------------------------------------------
+		// ~ Overriden methods
+		//-----------------------------------------------------------------------------------------
+
+		/**
+		 *
+		 */
+		override protected function dispatchOperationProgressEvent(total:Number, progress:Number):Boolean
+		{
+			this._total = total;
+			this._progress = progress;
+			return this.dispatchEvent(new this._eventClass(this.eventClassToEventName() + 'Progress', this.untypedResult, this.untypedError, this.messages, this.total, this.progress));
+		}
+
+		/**
+		 *
+		 */
+		override protected function dispatchOperationCompleteEvent(result:*=null):Boolean
+		{
+			if (result != null) this._result = result;
+			return this.dispatchEvent(new this._eventClass(this.eventClassToEventName() + 'Complete', this.untypedResult, this.untypedError, this.messages, this.total, this.progress));
+		}
+
+		/**
+		 *
+		 */
+		override protected function dispatchOperationErrorEvent(error:*=null):Boolean
+		{
+			if (error != null) this._error = error;
+			return this.dispatchEvent(new this._eventClass(this.eventClassToEventName() + 'Error', this.untypedResult, this.untypedError, this.messages, this.total, this.progress));
 		}
 	}
 }
