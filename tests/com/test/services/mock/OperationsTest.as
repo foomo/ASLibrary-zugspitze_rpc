@@ -1,9 +1,15 @@
 package com.test.services.mock
 {
+	import com.test.services.mock.events.GetExceptionOperationEvent;
 	import com.test.services.mock.events.GetStringOperationEvent;
+	import com.test.services.mock.operations.GetExceptionOperation;
 	import com.test.services.mock.operations.GetStringOperation;
 
+	import flexunit.framework.Assert;
+
+	import org.flexunit.async.Async;
 	import org.foomo.zugspitze.events.OperationEvent;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.services.types.Exception;
 
 	public class OperationsTest extends Object
 	{
@@ -52,11 +58,22 @@ package com.test.services.mock
 		[Test(async)]
 		public function testGetStringOperation():void
 		{
-			var op:GetStringOperation = new GetStringOperation('foobar', this.proxy);
-			Async.handleEvent(this, op, GetStringOperation.OPERATION_COMPLETE, function(event:CommandEvent, ... parms) {
-				Assert.assertEquals(op.result, 'foobar');
+			var value:String = 'foobar';
+			var operation:GetStringOperation = new GetStringOperation(value, this.proxy);
+			Async.handleEvent(this, operation, GetStringOperationEvent.GET_STRING_OPERATION_COMPLETE, function(event:GetStringOperationEvent, ... parms) {
+				Assert.assertEquals(event.result, value);
+				Assert.assertEquals(operation.result, value);
 			});
-			cmd.execute();
+		}
+
+		[Test(async)]
+		public function testGetExceptionOperation():void
+		{
+			var value:String = 'foobar';
+			var operation:GetExceptionOperation = new GetExceptionOperation(this.proxy);
+			Async.handleEvent(this, operation, GetExceptionOperationEvent.GET_EXCEPTION_OPERATION_ERROR, function(event:GetExceptionOperationEvent, ... parms) {
+				Assert.assertTrue(event.error is Exception);
+			});
 		}
 	}
 }

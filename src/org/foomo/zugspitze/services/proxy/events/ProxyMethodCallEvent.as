@@ -3,6 +3,7 @@ package org.foomo.zugspitze.services.proxy.events
 	import flash.events.Event;
 
 	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.utils.ClassUtils;
 
 
 	/**
@@ -13,30 +14,46 @@ package org.foomo.zugspitze.services.proxy.events
 	public class ProxyMethodCallEvent extends Event
 	{
 		//-----------------------------------------------------------------------------------------
-		// ~ Constants
-		//-----------------------------------------------------------------------------------------
-
-		public static const PROXY_METHOD_CALL_COMPLETE:String 	= "proxyMethodCallComplete";
-		public static const PROXY_METHOD_CALL_PROGRESS:String 	= "proxyMethodCallProgress";
-		public static const PROXY_METHOD_CALL_EXCEPTION:String 	= "proxyMethodCallException";
-		public static const PROXY_METHOD_CALL_ERROR:String 		= "proxyMethodCallError";
-
-		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 * The dispatching method call
+		 *
 		 */
-		private var _methodCall:ProxyMethodCall
+		private var _result:*;
+		/**
+		 *
+		 */
+		private var _error:String;
+		/**
+		 *
+		 */
+		private var _exception:*;
+		/**
+		 *
+		 */
+		private var _messages:Array;
+		/**
+		 *
+		 */
+		private var _bytesTotal:Number;
+		/**
+		 *
+		 */
+		private var _bytesLoaded:Number;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function ProxyMethodCallEvent(type:String, methodCall:ProxyMethodCall)
+		public function ProxyMethodCallEvent(type:String, result:*=null, error:String='', exception:*=null, messages:Array=null, bytesTotal:Number=0, bytesLoaded:Number=0)
 		{
-			this._methodCall = methodCall;
+			this._result = result;
+			this._error = error;
+			this._exception = exception;
+			this._messages = messages;
+			this._bytesTotal = bytesTotal;
+			this._bytesLoaded = bytesLoaded;
 			super(type);
 		}
 
@@ -49,7 +66,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		public function get bytesLoaded():Number
 		{
-			return (this.methodCall) ? this.methodCall.bytesLoaded : 0;
+			return this._bytesLoaded;
 		}
 
 		/**
@@ -57,15 +74,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		public function get bytesTotal():Number
 		{
-			return (this.methodCall) ? this.methodCall.bytesTotal : 0;
-		}
-
-		/**
-		 * The dispatching method call
-		 */
-		public function get methodCall():ProxyMethodCall
-		{
-			return this._methodCall;
+			return this._bytesTotal;
 		}
 
 		/**
@@ -73,7 +82,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		public function get error():String
 		{
-			return this._methodCall.error;
+			return this._error;
 		}
 
 		/**
@@ -81,7 +90,23 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		public function get messages():Array
 		{
-			return this._methodCall.messages;
+			return this._messages;
+		}
+
+		/**
+		 * Proxy call exception
+		 */
+		public function get exception():*
+		{
+			return this._exception;
+		}
+
+		/**
+		 * Untypes proxy call result
+		 */
+		public function get untypedResult():*
+		{
+			return this._result;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -91,17 +116,18 @@ package org.foomo.zugspitze.services.proxy.events
 		/**
 		 * @inherit
 		 */
-		public override function clone():Event
+		override public function clone():Event
 		{
-			return new ProxyMethodCallEvent(type, this.methodCall);
+			var eventClass:Class = ClassUtils.getClass(this);
+			return new eventClass(this.type, this.untypedResult, this.error, this.exception, this.messages, this.bytesTotal, this.bytesLoaded);
 		}
 
 		/**
 		 * @inherit
 		 */
-		public override function toString():String
+		override public function toString():String
 		{
-			return formatToString("ProxyMethodCallEvent", "methodCall");
+			return formatToString(ClassUtils.getClassName(this), 'result', 'error', 'exception', 'messages', 'bytesTotal', 'bytesLoaded');
 		}
 	}
 }

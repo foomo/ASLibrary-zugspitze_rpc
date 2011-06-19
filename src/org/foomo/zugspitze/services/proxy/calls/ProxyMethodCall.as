@@ -209,7 +209,7 @@ package org.foomo.zugspitze.services.proxy.calls
 		{
 			this._bytesLoaded = event.bytesLoaded;
 			this._bytesTotal = event.bytesTotal;
-			this.dispatchEvent(new this._eventClass(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS.replace('proxyMethod', this._methodName), this));
+			this.dispatchEvent(new this._eventClass(this._methodName + 'CallProgress', null, '', null, null, this._bytesTotal, this._bytesLoaded));
 		}
 
 		/**
@@ -220,7 +220,7 @@ package org.foomo.zugspitze.services.proxy.calls
 		protected function transport_errorHandler(event:Event):void
 		{
 			this._error = event['text'];
-			this.dispatchEvent(new this._eventClass(ProxyMethodCallEvent.PROXY_METHOD_CALL_ERROR.replace('proxyMethod', this._methodName), this));
+			this.dispatchEvent(new this._eventClass(this._methodName + 'CallError', null, this._error, null, null, this._bytesTotal, this._bytesLoaded));
 		}
 
 		/**
@@ -231,7 +231,7 @@ package org.foomo.zugspitze.services.proxy.calls
 		protected function token_methodCallTokenCompleteHandler(event:RPCMethodCallEvent):void
 		{
 			this._methodReply = event.methodReply;
-			this.dispatchEvent(new this._eventClass(ProxyMethodCallEvent.PROXY_METHOD_CALL_COMPLETE.replace('proxyMethod', this._methodName), this));
+			this.dispatchEvent(new this._eventClass(this._methodName + 'CallComplete', this._methodReply.value, '', this._methodReply.exception, this._methodReply.messages, this._bytesTotal, this._bytesLoaded));
 		}
 	}
 }

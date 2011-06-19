@@ -1,10 +1,13 @@
 package org.foomo.zugspitze.services.proxy.operations
 {
+
+	import flash.events.Event;
+
 	import org.foomo.zugspitze.core.IUnload;
 	import org.foomo.zugspitze.operations.Operation;
+	import org.foomo.zugspitze.services.proxy.Proxy;
 	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.services.proxy.events.ProxyMethodCallEvent;
-	import org.foomo.zugspitze.services.proxy.events.ProxyMethodOperationEvent;
 
 	public class ProxyMethodOperation extends Operation implements IUnload
 	{
@@ -16,19 +19,35 @@ package org.foomo.zugspitze.services.proxy.operations
 		 *
 		 */
 		protected var _methodCall:ProxyMethodCall;
+		/**
+		 *
+		 */
+		protected var _methodName:String;
+		/**
+		 *
+		 */
+		protected var _arguments:Array;
+		/**
+		 *
+		 */
+		protected var _proxy:Proxy;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function ProxyMethodOperation(method:Function, arguments:Array, eventClass:Class=null)
+		public function ProxyMethodOperation(proxy:Proxy, methodName:String, arguments:Array, eventClass:Class)
 		{
-			super((eventClass) ? eventClass : ProxyMethodOperationEvent);
+			this._proxy = proxy;
+			this._arguments = arguments;
+			this._methodName = methodName;
+			var method:Function = this._proxy[this._methodName];
+			this._methodCall = method.apply(this, this._arguments);
+			this._methodCall.addEventListener(this._methodName + 'CallComplete', this.methodCall_proxyMethodCallCompleteHandler);
+			this._methodCall.addEventListener(this._methodName + 'CallProgress', this.methodCall_proxyMethodCallProgressHandler);
+			this._methodCall.addEventListener(this._methodName + 'CallError', this.methodCall_proxyMethodCallErrorHandler);
 
-			this._methodCall = method.apply(this, arguments);
-			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_COMPLETE, this.methodCall_proxyMethodCallCompleteHandler);
-			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
-			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_ERROR, this.methodCall_proxyMethodCallErrorHandler);
+			super(eventClass);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -40,7 +59,7 @@ package org.foomo.zugspitze.services.proxy.operations
 		 */
 		public function get error():*
 		{
-			return this.operationError;
+			return this.untypedError;
 		}
 
 		/**
@@ -48,10 +67,13 @@ package org.foomo.zugspitze.services.proxy.operations
 		 */
 		public function unload():void
 		{
-			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_COMPLETE, this.methodCall_proxyMethodCallCompleteHandler);
-			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
-			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_ERROR, this.methodCall_proxyMethodCallErrorHandler);
+			this._methodCall.removeEventListener(this._methodName + 'CallComplete', this.methodCall_proxyMethodCallCompleteHandler);
+			this._methodCall.removeEventListener(this._methodName + 'CallProgress', this.methodCall_proxyMethodCallProgressHandler);
+			this._methodCall.removeEventListener(this._methodName + 'CallError', this.methodCall_proxyMethodCallErrorHandler);
+			this._arguments = null;
+			this._methodName = null;
 			this._methodCall = null;
+			this._proxy = null;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -79,11 +101,15 @@ package org.foomo.zugspitze.services.proxy.operations
 		 */
 		protected function methodCall_proxyMethodCallCompleteHandler(event:ProxyMethodCallEvent):void
 		{
-			if (event.methodCall.methodReply.exception != null) {
-				this.dispatchOperationErrorEvent(event.methodCall.methodReply.exception);
-			} else {
-				this.dispatchOperationCompleteEvent(event.methodCall.methodReply.value);
-			}
+			this.dispatchOperationCompleteEvent(event.untypedResult);
+		}
+
+		/**
+		 *
+		 */
+		protected function methodCall_proxyMethodCallExceptionHandler(event:Event):void
+		{
+			this.dispatchOperationErrorEvent(this._methodCall.methodReply.exception);
 		}
 	}
 }
