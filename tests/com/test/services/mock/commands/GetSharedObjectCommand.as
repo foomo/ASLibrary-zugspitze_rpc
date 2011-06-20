@@ -2,7 +2,7 @@ package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetSharedObjectCallEvent;
-	import com.test.services.shared.SharedObject;
+	import com.test.services.mock.vos.SharedObject;
 
 	public class GetSharedObjectCommand extends AbstractGetSharedObjectCommand
 	{

@@ -1,14 +1,20 @@
-package com.test.services.shared
+package com.test.services.mock.vos
 {
-	[RemoteClass(alias="Foomo.Zugspitze.Services.Mock.SharedObject")]
-
 	[Bindable]
+	[RemoteClass(alias='Foomo.Zugspitze.Services.Mock.SharedObject')]
+
+	/**
+	 * 
+	 */
 	public class SharedObject
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------
 
-		public var name:String = 'shareObject';
+		/**
+		 * 
+		 */
+		public var name:String;
 	}
 }
