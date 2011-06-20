@@ -1,4 +1,4 @@
-package org.foomo.zugspitze.services.rpc.protocol
+package org.foomo.zugspitze.services.core.rpc.protocol
 {
 	//[ExcludeClass]
 	[RemoteClass(alias='RPCHead')]

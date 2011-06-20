@@ -1,37 +1,34 @@
-package org.foomo.zugspitze.services.rpc.events
+package org.foomo.zugspitze.services.core.proxy.events
 {
+	import flash.events.ErrorEvent;
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.services.rpc.RPCTransport;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
 
-	public class RPCClientEvent extends Event
+	public class ProxyErrorEvent extends ErrorEvent
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constants
 		//-----------------------------------------------------------------------------------------
 
-		public static const RPC_TRANSPORT_COMPLETE:String 	= "rpcTransportComplete";
-		public static const RPC_TRANSPORT_PROGRESS:String 	= "rpcTransportProgress";
-		public static const RPC_TRANSPORT_OPEN:String 		= "rpcTransportOpen";
+		public static const COMMUNICATION_ERROR:String 	= "communicationError";
+		public static const SECURITY_ERROR:String 		= "securityError";
+		public static const IO_ERROR:String 			= "ioError";
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------
 
-		/**
-		 *
-		 */
-		private var _transport:RPCTransport;
+		private var _methodCall:ProxyMethodCall;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function RPCClientEvent(type:String, transport:RPCTransport)
+		public function ProxyErrorEvent(type:String, methodCall:ProxyMethodCall, text:String="", id:int=0)
 		{
-			this._transport = transport;
-
-			super(type);
+			this._methodCall = methodCall;
+			super(type, false, false, text, id);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -39,11 +36,11 @@ package org.foomo.zugspitze.services.rpc.events
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * The causing method call
 		 */
-		public function get transport():RPCTransport
+		public function get transport():ProxyMethodCall
 		{
-			return _transport;
+			return _methodCall;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -55,7 +52,7 @@ package org.foomo.zugspitze.services.rpc.events
 		 */
 		override public function clone():Event
 		{
-			return new RPCClientEvent(this.type, this.transport);
+			return new ProxyErrorEvent(type, transport);
 		}
 
 		/**
@@ -63,7 +60,7 @@ package org.foomo.zugspitze.services.rpc.events
 		 */
 		override public function toString():String
 		{
-			return formatToString("RPCClientEvent", "transport");
+			return formatToString("RPCClientErrorEvent", "methodCall", "text", "id");
 		}
 	}
 }

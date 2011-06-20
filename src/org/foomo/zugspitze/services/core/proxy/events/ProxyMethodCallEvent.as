@@ -1,4 +1,4 @@
-package org.foomo.zugspitze.services.proxy.events
+package org.foomo.zugspitze.services.core.proxy.events
 {
 	import flash.events.Event;
 

@@ -1,12 +1,12 @@
-package org.foomo.zugspitze.services.rpc.protocol.call
+package org.foomo.zugspitze.services.core.rpc.protocol.reply
 {
 	//[ExcludeClass]
-	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Call.MethodCall')]
+	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Reply.MethodReply')]
 
 	/**
 	 * @private
 	 */
-	public class MethodCall
+	public class MethodReply
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
@@ -17,12 +17,16 @@ package org.foomo.zugspitze.services.rpc.protocol.call
 		 */
 		public var id:String;
 		/**
-		 * name of the method to be called
+		 * return value
 		 */
-		public var method:String;
+		public var value:*;
 		/**
-		 * the method call arguments
+		 * messages
 		 */
-		public var arguments:Array;
+		public var messages:Array = [];
+		/**
+		 * server side exception
+		 */
+		public var exception:*;
 	}
 }

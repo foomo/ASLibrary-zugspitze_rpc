@@ -1,6 +1,6 @@
-package org.foomo.zugspitze.services.rpc.protocol
+package org.foomo.zugspitze.services.core.rpc.protocol
 {
-	import org.foomo.zugspitze.services.rpc.protocol.call.CallHead;
+	import org.foomo.zugspitze.services.core.rpc.protocol.call.CallHead;
 
 	//[ExcludeClass]
 	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Call')]

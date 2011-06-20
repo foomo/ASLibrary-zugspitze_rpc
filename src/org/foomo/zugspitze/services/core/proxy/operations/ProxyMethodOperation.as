@@ -1,13 +1,13 @@
-package org.foomo.zugspitze.services.proxy.operations
+package org.foomo.zugspitze.services.core.proxy.operations
 {
 
 	import flash.events.Event;
 
 	import org.foomo.zugspitze.core.IUnload;
 	import org.foomo.zugspitze.operations.Operation;
-	import org.foomo.zugspitze.services.proxy.Proxy;
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
-	import org.foomo.zugspitze.services.proxy.events.ProxyMethodCallEvent;
+	import org.foomo.zugspitze.services.core.proxy.Proxy;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
 
 	public class ProxyMethodOperation extends Operation implements IUnload
 	{

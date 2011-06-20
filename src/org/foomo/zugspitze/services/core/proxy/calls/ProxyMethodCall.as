@@ -1,4 +1,4 @@
-package org.foomo.zugspitze.services.proxy.calls
+package org.foomo.zugspitze.services.core.proxy.calls
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -7,12 +7,12 @@ package org.foomo.zugspitze.services.proxy.calls
 	import flash.events.SecurityErrorEvent;
 
 	import org.foomo.zugspitze.core.IUnload;
-	import org.foomo.zugspitze.services.proxy.events.ProxyMethodCallEvent;
-	import org.foomo.zugspitze.services.rpc.RPCMethodCallToken;
-	import org.foomo.zugspitze.services.rpc.RPCTransport;
-	import org.foomo.zugspitze.services.rpc.events.RPCMethodCallEvent;
-	import org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent;
-	import org.foomo.zugspitze.services.rpc.protocol.reply.MethodReply;
+	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
+	import org.foomo.zugspitze.services.core.rpc.RPCMethodCallToken;
+	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
+	import org.foomo.zugspitze.services.core.rpc.events.RPCMethodCallEvent;
+	import org.foomo.zugspitze.services.core.rpc.events.RPCTransportErrorEvent;
+	import org.foomo.zugspitze.services.core.rpc.protocol.reply.MethodReply;
 	import org.foomo.zugspitze.zugspitze_internal;
 
 	/**

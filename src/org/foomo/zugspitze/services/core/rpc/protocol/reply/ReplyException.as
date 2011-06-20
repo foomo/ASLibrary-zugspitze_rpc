@@ -1,4 +1,4 @@
-package org.foomo.zugspitze.services.rpc.protocol.reply
+package org.foomo.zugspitze.services.core.rpc.protocol.reply
 {
 	//[ExcludeClass]
 	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Reply.Exception')]

@@ -1,23 +1,23 @@
-package org.foomo.zugspitze.services.proxy
+package org.foomo.zugspitze.services.core.proxy
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
 
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
-	import org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent;
-	import org.foomo.zugspitze.services.rpc.RPCClient;
-	import org.foomo.zugspitze.services.rpc.RPCMethodCallToken;
-	import org.foomo.zugspitze.services.rpc.RPCTransport;
-	import org.foomo.zugspitze.services.rpc.events.RPCClientErrorEvent;
-	import org.foomo.zugspitze.services.rpc.events.RPCClientEvent;
-	import org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent;
+	import org.foomo.zugspitze.services.core.rpc.RPCClient;
+	import org.foomo.zugspitze.services.core.rpc.RPCMethodCallToken;
+	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
+	import org.foomo.zugspitze.services.core.rpc.events.RPCClientErrorEvent;
+	import org.foomo.zugspitze.services.core.rpc.events.RPCClientEvent;
+	import org.foomo.zugspitze.services.core.rpc.events.RPCTransportErrorEvent;
 	import org.foomo.zugspitze.zugspitze_internal;
 
-	[Event(name="ioError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
-	[Event(name="securityError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
-	[Event(name="communicationError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
+	[Event(name="ioError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
+	[Event(name="securityError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
+	[Event(name="communicationError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
 
 	public class Proxy extends EventDispatcher
 	{

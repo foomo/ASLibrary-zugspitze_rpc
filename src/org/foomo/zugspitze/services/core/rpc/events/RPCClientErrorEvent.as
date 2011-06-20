@@ -1,9 +1,9 @@
-package org.foomo.zugspitze.services.rpc.events
+package org.foomo.zugspitze.services.core.rpc.events
 {
 	import flash.events.ErrorEvent;
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.services.rpc.RPCTransport;
+	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
 
 	public class RPCClientErrorEvent extends ErrorEvent
 	{
