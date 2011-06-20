@@ -4,7 +4,7 @@ package com.test.services.mock.events
 
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.services.proxy.events.ProxyMethodCallEvent;
+	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
 
 	/**
 	 *

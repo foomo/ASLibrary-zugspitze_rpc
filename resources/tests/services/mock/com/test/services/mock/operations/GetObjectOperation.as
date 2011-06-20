@@ -3,7 +3,7 @@ package com.test.services.mock.operations
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetObjectOperationEvent;
 
-	import org.foomo.zugspitze.services.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
 
 	[Event(name="GetObjectOperationComplete", type="com.test.services.mock.events.GetObjectOperationEvent")]
 	[Event(name="GetObjectOperationProgress", type="com.test.services.mock.events.GetObjectOperationEvent")]

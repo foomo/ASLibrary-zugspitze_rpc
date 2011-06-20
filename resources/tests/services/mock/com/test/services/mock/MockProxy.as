@@ -1,7 +1,7 @@
 package com.test.services.mock
 {
 	import org.foomo.zugspitze.zugspitze_internal;
-	import org.foomo.zugspitze.services.proxy.Proxy;
+	import org.foomo.zugspitze.services.core.proxy.Proxy;
 	import com.test.services.mock.calls.GetIntCall;
 	import com.test.services.mock.calls.GetNumberCall;
 	import com.test.services.mock.calls.GetStringCall;

@@ -1,7 +1,7 @@
 package com.test.services.mock.calls
 {
 	import com.test.services.mock.events.GetComplexTypeCallEvent;
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 
 	[Event(name="getComplexTypeCallComplete", type="com.test.services.mock.events.GetComplexTypeCallEvent")]

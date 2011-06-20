@@ -1,7 +1,7 @@
 package com.test.services.mock.calls
 {
 	import com.test.services.mock.events.GetObjectCallEvent;
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
 
 	[Event(name="getObjectCallComplete", type="com.test.services.mock.events.GetObjectCallEvent")]
 	[Event(name="getObjectCallProgress", type="com.test.services.mock.events.GetObjectCallEvent")]

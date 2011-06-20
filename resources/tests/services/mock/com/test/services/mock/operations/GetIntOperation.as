@@ -3,7 +3,7 @@ package com.test.services.mock.operations
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetIntOperationEvent;
 
-	import org.foomo.zugspitze.services.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
 
 	[Event(name="GetIntOperationComplete", type="com.test.services.mock.events.GetIntOperationEvent")]
 	[Event(name="GetIntOperationProgress", type="com.test.services.mock.events.GetIntOperationEvent")]

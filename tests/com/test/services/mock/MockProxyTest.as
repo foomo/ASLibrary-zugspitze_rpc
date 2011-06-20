@@ -1,6 +1,5 @@
 package com.test.services.mock
 {
-	import com.test.services.mock.calls.GetComplexTypeMessageCall;
 	import com.test.services.mock.events.CustomExceptionEvent;
 	import com.test.services.mock.events.ExceptionEvent;
 	import com.test.services.mock.events.GetBooleanCallEvent;
@@ -22,8 +21,8 @@ package com.test.services.mock
 	import mx.utils.ObjectUtil;
 
 	import org.flexunit.async.Async;
+	import org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
-	import org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent;
 
 	public class MockProxyTest
 	{

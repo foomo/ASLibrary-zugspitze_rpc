@@ -1,11 +1,11 @@
 package com.test.services.mock.calls
 {
-	import org.foomo.zugspitze.services.rpc.events.RPCMethodCallEvent;
+	import org.foomo.zugspitze.services.core.rpc.events.RPCMethodCallEvent;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.services.types.Exception;
 	import com.test.services.mock.events.ExceptionEvent;
 
 	import com.test.services.mock.events.GetExceptionCallEvent;
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
 
 	[Event(name="getExceptionCallComplete", type="com.test.services.mock.events.GetExceptionCallEvent")]
 	[Event(name="getExceptionCallProgress", type="com.test.services.mock.events.GetExceptionCallEvent")]
