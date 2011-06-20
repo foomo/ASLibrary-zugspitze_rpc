@@ -2,13 +2,12 @@ package org.foomo.zugspitze.services.proxy.events
 {
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.utils.ClassUtils;
 
 
 	/**
 	 * This is a base class and should not be used independently.
-	 * Define your own ProxyMethodCallEvent class and it's event types
+	 * Define your own ProxyMethodCallEvent class and it"s event types
 	 */
 	//[ExcludeClass]
 	public class ProxyMethodCallEvent extends Event
@@ -46,7 +45,7 @@ package org.foomo.zugspitze.services.proxy.events
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function ProxyMethodCallEvent(type:String, result:*=null, error:String='', exception:*=null, messages:Array=null, bytesTotal:Number=0, bytesLoaded:Number=0)
+		public function ProxyMethodCallEvent(type:String, result:*=null, error:String="", exception:*=null, messages:Array=null, bytesTotal:Number=0, bytesLoaded:Number=0)
 		{
 			this._result = result;
 			this._error = error;
@@ -127,7 +126,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		override public function toString():String
 		{
-			return formatToString(ClassUtils.getClassName(this), 'result', 'error', 'exception', 'messages', 'bytesTotal', 'bytesLoaded');
+			return formatToString(ClassUtils.getClassName(this), "result", "error", "exception", "messages", "bytesTotal", "bytesLoaded");
 		}
 	}
 }

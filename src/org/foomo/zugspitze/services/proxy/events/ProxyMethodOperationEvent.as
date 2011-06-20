@@ -58,6 +58,15 @@ package org.foomo.zugspitze.services.proxy.events
 		/**
 		 * @inherit
 		 */
+		override public function cloneWithType(type:String):OperationEvent
+		{
+			var eventClass:Class = ClassUtils.getClass(this);
+			return new eventClass(type, this.untypedResult, this.untypedError, this.messages, this.total, this.progress);
+		}
+
+		/**
+		 * @inherit
+		 */
 		override public function toString():String
 		{
 			return formatToString(ClassUtils.getClassName(this), 'result', 'error', 'messages', 'total', 'progress');
