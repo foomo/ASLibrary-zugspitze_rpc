@@ -13,7 +13,7 @@ package com.test.services.mock
 	import com.test.services.mock.events.GetObjectCallEvent;
 	import com.test.services.mock.events.GetSharedObjectCallEvent;
 	import com.test.services.mock.events.GetStringCallEvent;
-	import com.test.services.shared.SharedObject;
+	import com.test.services.mock.vos.SharedObject;
 
 	import flash.events.SecurityErrorEvent;
 

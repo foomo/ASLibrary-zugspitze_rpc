@@ -6,7 +6,7 @@ package com.test.services.mock
 	import com.test.services.mock.commands.GetMessageCommand;
 	import com.test.services.mock.commands.GetSharedObjectCommand;
 	import com.test.services.mock.commands.GetStringCommand;
-	import com.test.services.shared.SharedObject;
+	import com.test.services.mock.vos.SharedObject;
 
 	import flexunit.framework.Assert;
 

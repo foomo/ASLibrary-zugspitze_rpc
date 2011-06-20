@@ -10,7 +10,7 @@ package com.test.services.mock
 	import com.test.services.mock.operations.GetMessageOperation;
 	import com.test.services.mock.operations.GetSharedObjectOperation;
 	import com.test.services.mock.operations.GetStringOperation;
-	import com.test.services.shared.SharedObject;
+	import com.test.services.mock.vos.SharedObject;
 
 	import flexunit.framework.Assert;
 
