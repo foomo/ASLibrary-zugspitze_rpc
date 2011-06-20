@@ -1,33 +1,13 @@
 <report>
   <scripts>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/events/RPCTransportEvent.as" mod="1308072871000" size="983" optimizedsize="521">
-      <def id="org.foomo.zugspitze.services.rpc.events:RPCTransportEvent" />
-      <pre id="flash.events:Event" />
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/events/RPCTransportErrorEvent.as" mod="1308423453000" size="1095" optimizedsize="560">
+      <def id="org.foomo.zugspitze.services.rpc.events:RPCTransportErrorEvent" />
+      <pre id="flash.events:ErrorEvent" />
+      <dep id="flash.events:Event" />
       <dep id="AS3" />
-    </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/events/RPCMethodCallTokenEvent.as" mod="1308214753000" size="1109" optimizedsize="637">
-      <def id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallTokenEvent" />
-      <pre id="flash.events:Event" />
-      <dep id="org.foomo.zugspitze.services.rpc.protocol.call:MethodCall" />
-      <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
-    </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/commands/ProxyMethodCommand.as" mod="1308233709000" size="2505" optimizedsize="1364">
-      <def id="org.foomo.zugspitze.services.proxy.commands:ProxyMethodCommand" />
-      <pre id="org.foomo.zugspitze.core:IUnload" />
-      <pre id="org.foomo.zugspitze.commands:Command" />
-      <pre id="org.foomo.zugspitze.commands:ICommand" />
-      <dep id="org.foomo.zugspitze.services.proxy.events:ProxyMethodCallEvent" />
-      <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.services.proxy.calls:ProxyMethodCall" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/reply/ReplyException.as" mod="1308208719000" size="655" optimizedsize="302">
       <def id="org.foomo.zugspitze.services.rpc.protocol.reply:ReplyException" />
-      <pre id="Object" />
-      <dep id="AS3" />
-    </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.core:ISetBusyStatus)" mod="1307981393000" size="500" optimizedsize="200">
-      <def id="org.foomo.zugspitze.core:ISetBusyStatus" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
@@ -35,26 +15,32 @@
       <def id="org.foomo.zugspitze:zugspitze_internal" />
       <dep id="AS3" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.operations:IOperation)" mod="1308145689000" size="935" optimizedsize="304">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.operations:IOperation)" mod="1308420656000" size="929" optimizedsize="302">
       <def id="org.foomo.zugspitze.operations:IOperation" />
       <pre id="flash.events:IEventDispatcher" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/events/ProxyMethodOperationEvent.as" mod="1308244263000" size="1377" optimizedsize="668">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/events/ProxyMethodOperationEvent.as" mod="1308560503000" size="1574" optimizedsize="786">
       <def id="org.foomo.zugspitze.services.proxy.events:ProxyMethodOperationEvent" />
       <pre id="org.foomo.zugspitze.events:OperationEvent" />
       <dep id="flash.events:Event" />
-      <dep id="org.foomo.zugspitze.operations:IOperation" />
       <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
+      <dep id="org.foomo.zugspitze.utils:ClassUtils" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/reply/MethodReply.as" mod="1308227478000" size="678" optimizedsize="320">
       <def id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/RPCTransport.as" mod="1308226140000" size="1982" optimizedsize="1074">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/events/ProxyErrorEvent.as" mod="1308423453000" size="1359" optimizedsize="728">
+      <def id="org.foomo.zugspitze.services.proxy.events:ProxyErrorEvent" />
+      <pre id="flash.events:ErrorEvent" />
+      <dep id="flash.events:Event" />
+      <dep id="org.foomo.zugspitze.services.proxy.calls:ProxyMethodCall" />
+      <dep id="AS3" />
+    </script>
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/RPCTransport.as" mod="1308423453000" size="2193" optimizedsize="1208">
       <def id="org.foomo.zugspitze.services.rpc:RPCTransport" />
       <pre id="flash.net:URLStream" />
       <dep id="flash.net:URLRequestMethod" />
@@ -63,16 +49,32 @@
       <dep id="flash.utils:ByteArray" />
       <dep id="flash.net:URLRequest" />
       <dep id="AS3" />
-      <dep id="flash.events:IOErrorEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCTransportErrorEvent" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol:Reply" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/Proxy.as" mod="1308230799000" size="1429" optimizedsize="749">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.utils:ClassUtils)" mod="1308422461000" size="1563" optimizedsize="800">
+      <def id="org.foomo.zugspitze.utils:ClassUtils" />
+      <pre id="Object" />
+      <dep id="flash.utils:getQualifiedClassName" />
+      <dep id="AS3" />
+      <dep id="flash.utils:getDefinitionByName" />
+      <dep id="Error" />
+    </script>
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/Proxy.as" mod="1308423453000" size="3079" optimizedsize="1963">
       <def id="org.foomo.zugspitze.services.proxy:Proxy" />
       <pre id="flash.events:EventDispatcher" />
+      <dep id="flash.events:Event" />
       <dep id="org.foomo.zugspitze:zugspitze_internal" />
+      <dep id="org.foomo.zugspitze.services.rpc:RPCMethodCallToken" />
       <dep id="org.foomo.zugspitze.services.rpc:RPCClient" />
       <dep id="org.foomo.zugspitze.services.proxy.calls:ProxyMethodCall" />
       <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.services.proxy.events:ProxyErrorEvent" />
+      <dep id="flash.events:IOErrorEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCTransportErrorEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc:RPCTransport" />
+      <dep id="flash.events:SecurityErrorEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCClientErrorEvent" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.core:IUnload)" mod="1307714579000" size="430" optimizedsize="176">
       <def id="org.foomo.zugspitze.core:IUnload" />
@@ -84,92 +86,95 @@
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/RPCMethodCallToken.as" mod="1308214772000" size="758" optimizedsize="284">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/RPCMethodCallToken.as" mod="1308423453000" size="754" optimizedsize="289">
       <def id="org.foomo.zugspitze.services.rpc:RPCMethodCallToken" />
       <pre id="flash.events:EventDispatcher" />
       <dep id="flash.events:ProgressEvent" />
       <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallTokenEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallEvent" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/events/ProxyMethodCallEvent.as" mod="1308232222000" size="1474" optimizedsize="719">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/events/ProxyMethodCallEvent.as" mod="1308560481000" size="2082" optimizedsize="899">
       <def id="org.foomo.zugspitze.services.proxy.events:ProxyMethodCallEvent" />
       <pre id="flash.events:Event" />
-      <dep id="org.foomo.zugspitze.services.proxy.calls:ProxyMethodCall" />
       <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.utils:ClassUtils" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.events:CommandEvent)" mod="1307712203000" size="878" optimizedsize="489">
-      <def id="org.foomo.zugspitze.events:CommandEvent" />
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/events/RPCMethodCallEvent.as" mod="1308423453000" size="1210" optimizedsize="673">
+      <def id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallEvent" />
       <pre id="flash.events:Event" />
+      <dep id="org.foomo.zugspitze.services.rpc.protocol.call:MethodCall" />
       <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.commands:ICommand" />
+      <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.operations:Operation)" mod="1308146703000" size="1966" optimizedsize="894">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.operations:Operation)" mod="1308520160000" size="2079" optimizedsize="1039">
       <def id="org.foomo.zugspitze.operations:Operation" />
       <pre id="flash.events:EventDispatcher" />
       <pre id="org.foomo.zugspitze.operations:IOperation" />
+      <dep id="org.foomo.zugspitze.utils:StringUtils" />
       <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.events:OperationEvent" />
+      <dep id="org.foomo.zugspitze.utils:ClassUtils" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/reply/ReplyHead.as" mod="1308208724000" size="643" optimizedsize="296">
       <def id="org.foomo.zugspitze.services.rpc.protocol.reply:ReplyHead" />
       <pre id="org.foomo.zugspitze.services.rpc.protocol:AbstractHead" />
       <dep id="AS3" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/calls/ProxyMethodCall.as" mod="1308232369000" size="4117" optimizedsize="2007">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/calls/ProxyMethodCall.as" mod="1308518659000" size="3984" optimizedsize="2028">
       <def id="org.foomo.zugspitze.services.proxy.calls:ProxyMethodCall" />
       <pre id="flash.events:EventDispatcher" />
       <pre id="org.foomo.zugspitze.core:IUnload" />
       <dep id="flash.events:Event" />
       <dep id="org.foomo.zugspitze:zugspitze_internal" />
-      <dep id="org.foomo.zugspitze.services.proxy.events:ProxyMethodCallEvent" />
       <dep id="org.foomo.zugspitze.services.rpc:RPCMethodCallToken" />
       <dep id="flash.events:ProgressEvent" />
       <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallTokenEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallEvent" />
       <dep id="flash.events:IOErrorEvent" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCTransportErrorEvent" />
       <dep id="org.foomo.zugspitze.services.rpc:RPCTransport" />
       <dep id="flash.events:SecurityErrorEvent" />
-    </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.commands:Command)" mod="1308073868000" size="1537" optimizedsize="759">
-      <def id="org.foomo.zugspitze.commands:Command" />
-      <pre id="flash.events:EventDispatcher" />
-      <pre id="org.foomo.zugspitze.core:ISetBusyStatus" />
-      <dep id="org.foomo.zugspitze.events:CommandEvent" />
-      <dep id="AS3" />
-      <dep id="org.foomo.zugspitze.commands:ICommand" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/AbstractHead.as" mod="1308072870000" size="558" optimizedsize="269">
       <def id="org.foomo.zugspitze.services.rpc.protocol:AbstractHead" />
       <pre id="Object" />
       <dep id="AS3" />
     </script>
-    <script name="_f45e74c36783b1d1c5041752b0e8ce5b5ae91fa67b8ae70e1ad209f76dd081d1_flash_display_Sprite.as" mod="1308295984973" size="1095" optimizedsize="562">
-      <def id="_f45e74c36783b1d1c5041752b0e8ce5b5ae91fa67b8ae70e1ad209f76dd081d1_flash_display_Sprite" />
+    <script name="_c17b053f17ca41be82ad41ef50faae0d5f25e8640fda9d436d02169655645086_flash_display_Sprite.as" mod="1308564091511" size="1095" optimizedsize="562">
+      <def id="_c17b053f17ca41be82ad41ef50faae0d5f25e8640fda9d436d02169655645086_flash_display_Sprite" />
       <pre id="flash.display:Sprite" />
       <dep id="flash.system:Security" />
       <dep id="AS3" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/RPCClient.as" mod="1308220470000" size="3773" optimizedsize="2211">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/RPCClient.as" mod="1308423453000" size="5404" optimizedsize="3063">
       <def id="org.foomo.zugspitze.services.rpc:RPCClient" />
       <pre id="flash.events:EventDispatcher" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol.call:MethodCall" />
       <dep id="flash.events:Event" />
       <dep id="org.foomo.zugspitze.services.rpc:RPCMethodCallToken" />
-      <dep id="AS3" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol.call:CallHead" />
-      <dep id="org.foomo.zugspitze.services.rpc.protocol:Call" />
-      <dep id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallTokenEvent" />
       <dep id="flash.events:IOErrorEvent" />
-      <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
-      <dep id="org.foomo.zugspitze.services.rpc:RPCTransport" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCTransportErrorEvent" />
       <dep id="flash.events:SecurityErrorEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc:RPCTransport" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol:Reply" />
+      <dep id="flash.events:ProgressEvent" />
+      <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.services.rpc.protocol:Call" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCMethodCallEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCClientEvent" />
+      <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:MethodReply" />
+      <dep id="org.foomo.zugspitze.services.rpc.events:RPCClientErrorEvent" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.events:OperationEvent)" mod="1308244272000" size="1630" optimizedsize="804">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.events:OperationEvent)" mod="1308563252000" size="2095" optimizedsize="1132">
       <def id="org.foomo.zugspitze.events:OperationEvent" />
       <pre id="flash.events:Event" />
-      <dep id="org.foomo.zugspitze.operations:IOperation" />
+      <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.utils:ClassUtils" />
+    </script>
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/call/CallHead.as" mod="1308208731000" size="724" optimizedsize="385">
+      <def id="org.foomo.zugspitze.services.rpc.protocol.call:CallHead" />
+      <pre id="org.foomo.zugspitze.services.rpc.protocol:AbstractHead" />
       <dep id="AS3" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/Reply.as" mod="1308208706000" size="618" optimizedsize="322">
@@ -178,31 +183,39 @@
       <dep id="AS3" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol.reply:ReplyHead" />
     </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.commands:ICommand)" mod="1307698085000" size="503" optimizedsize="225">
-      <def id="org.foomo.zugspitze.commands:ICommand" />
-      <pre id="flash.events:IEventDispatcher" />
-      <pre id="Object" />
-      <dep id="AS3" />
-    </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/call/CallHead.as" mod="1308208731000" size="724" optimizedsize="385">
-      <def id="org.foomo.zugspitze.services.rpc.protocol.call:CallHead" />
-      <pre id="org.foomo.zugspitze.services.rpc.protocol:AbstractHead" />
-      <dep id="AS3" />
-    </script>
-    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/operations/ProxyMethodOperation.as" mod="1308231914000" size="2475" optimizedsize="1435">
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/proxy/operations/ProxyMethodOperation.as" mod="1308520478000" size="3798" optimizedsize="2002">
       <def id="org.foomo.zugspitze.services.proxy.operations:ProxyMethodOperation" />
       <pre id="org.foomo.zugspitze.operations:Operation" />
       <pre id="org.foomo.zugspitze.core:IUnload" />
+      <dep id="flash.events:Event" />
       <dep id="org.foomo.zugspitze.services.proxy.events:ProxyMethodCallEvent" />
-      <dep id="org.foomo.zugspitze.services.proxy.events:ProxyMethodOperationEvent" />
       <dep id="org.foomo.zugspitze.services.proxy.calls:ProxyMethodCall" />
       <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.services.proxy:Proxy" />
     </script>
     <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/protocol/Call.as" mod="1308208699000" size="599" optimizedsize="307">
       <def id="org.foomo.zugspitze.services.rpc.protocol:Call" />
       <pre id="Object" />
       <dep id="org.foomo.zugspitze.services.rpc.protocol.call:CallHead" />
       <dep id="AS3" />
+    </script>
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc(org.foomo.zugspitze.utils:StringUtils)" mod="1308421219000" size="716" optimizedsize="376">
+      <def id="org.foomo.zugspitze.utils:StringUtils" />
+      <pre id="Object" />
+      <dep id="AS3" />
+    </script>
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/events/RPCClientErrorEvent.as" mod="1308423453000" size="1353" optimizedsize="708">
+      <def id="org.foomo.zugspitze.services.rpc.events:RPCClientErrorEvent" />
+      <pre id="flash.events:ErrorEvent" />
+      <dep id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.services.rpc:RPCTransport" />
+    </script>
+    <script name="/Users/franklin/Workspaces/flex4/zugspitze_services/src/org/foomo/zugspitze/services/rpc/events/RPCClientEvent.as" mod="1308423453000" size="1249" optimizedsize="652">
+      <def id="org.foomo.zugspitze.services.rpc.events:RPCClientEvent" />
+      <pre id="flash.events:Event" />
+      <dep id="AS3" />
+      <dep id="org.foomo.zugspitze.services.rpc:RPCTransport" />
     </script>
   </scripts>
   <external-defs>
@@ -212,12 +225,16 @@
     <ext id="flash.events:SecurityErrorEvent" />
     <ext id="flash.events:ProgressEvent" />
     <ext id="flash.events:Event" />
+    <ext id="Error" />
     <ext id="flash.net:URLStream" />
+    <ext id="flash.utils:getQualifiedClassName" />
+    <ext id="flash.utils:getDefinitionByName" />
     <ext id="flash.utils:ByteArray" />
     <ext id="flash.net:URLRequestMethod" />
     <ext id="flash.net:URLRequest" />
     <ext id="flash.events:EventDispatcher" />
     <ext id="flash.system:Security" />
+    <ext id="flash.events:ErrorEvent" />
     <ext id="flash.net:ObjectEncoding" />
     <ext id="Object" />
     <ext id="flash.display:Sprite" />
