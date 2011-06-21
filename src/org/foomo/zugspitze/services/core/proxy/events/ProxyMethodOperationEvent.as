@@ -8,7 +8,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 	/**
 	 * @inherit
 	 */
-	//[ExcludeClass]
+	[ExcludeClass]
 	public class ProxyMethodOperationEvent extends OperationEvent
 	{
 		//-----------------------------------------------------------------------------------------

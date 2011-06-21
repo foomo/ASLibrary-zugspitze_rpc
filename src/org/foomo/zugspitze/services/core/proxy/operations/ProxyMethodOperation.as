@@ -9,6 +9,10 @@ package org.foomo.zugspitze.services.core.proxy.operations
 	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
 
+	/**
+	 *
+	 */
+	[ExcludeClass]
 	public class ProxyMethodOperation extends Operation implements IUnload
 	{
 		//-----------------------------------------------------------------------------------------

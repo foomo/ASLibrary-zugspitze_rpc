@@ -19,7 +19,7 @@ package org.foomo.zugspitze.services.core.proxy.calls
 	 * This is a base class and should not be used independently.
 	 * Define your MethodCall class and and define your custom event class.
 	 */
-	//[ExcludeClass]
+	[ExcludeClass]
 	public class ProxyMethodCall extends EventDispatcher implements IUnload
 	{
 		//-----------------------------------------------------------------------------------------

@@ -1,6 +1,6 @@
 package org.foomo.zugspitze.services.core.rpc.protocol.reply
 {
-	//[ExcludeClass]
+	[ExcludeClass]
 	[RemoteClass(alias='Foomo.Services.RPC.Protocol.Reply.MethodReply')]
 
 	/**

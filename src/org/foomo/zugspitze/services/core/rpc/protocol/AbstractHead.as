@@ -1,7 +1,7 @@
 package org.foomo.zugspitze.services.core.rpc.protocol
 {
-	//[ExcludeClass]
-	[RemoteClass(alias='RPCHead')]
+	[ExcludeClass]
+	[RemoteClass(alias='Foomo.Services.RPC.Protocol.RPCHead')]
 
 	/**
 	 * @private

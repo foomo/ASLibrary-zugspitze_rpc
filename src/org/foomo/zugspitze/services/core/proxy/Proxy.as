@@ -19,6 +19,10 @@ package org.foomo.zugspitze.services.core.proxy
 	[Event(name="securityError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
 	[Event(name="communicationError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
 
+	/**
+	 *
+	 */
+	[ExcludeClass]
 	public class Proxy extends EventDispatcher
 	{
 		//-----------------------------------------------------------------------------------------

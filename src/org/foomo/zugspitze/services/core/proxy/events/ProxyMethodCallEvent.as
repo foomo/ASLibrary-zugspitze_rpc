@@ -9,7 +9,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 	 * This is a base class and should not be used independently.
 	 * Define your own ProxyMethodCallEvent class and it"s event types
 	 */
-	//[ExcludeClass]
+	[ExcludeClass]
 	public class ProxyMethodCallEvent extends Event
 	{
 		//-----------------------------------------------------------------------------------------
