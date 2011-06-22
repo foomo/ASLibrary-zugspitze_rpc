@@ -4,6 +4,7 @@
 	<type>Core Library</type>
 	<name>Zugspitze Service Library</name>
 	<description>The Zugspitze Service Library.</description>
+	<exclude>true</exclude>
 	<dependencies>
 		<id>org.foomo.zugspitze.core</id>
 	</dependencies>
