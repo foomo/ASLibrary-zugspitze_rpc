@@ -215,8 +215,8 @@
       <show-unused-type-selector-warnings>true</show-unused-type-selector-warnings>
       <!-- compiler.source-path: list of path elements that form the roots of ActionScript class hierarchies-->
       <source-path>
-         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesCore/src</path-element>
-         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesCore/src</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesProxy/src</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesProxy/src</path-element>
       </source-path>
       <!-- compiler.strict: runs the AS3 compiler in strict error checking mode.-->
       <strict>true</strict>
