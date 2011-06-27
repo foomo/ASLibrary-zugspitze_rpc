@@ -9,19 +9,19 @@
 	minWidth="955" minHeight="600" creationComplete="onCreationComplete()">
 	<fx:Script>
 		<![CDATA[
-			import com.test.services.mock.MockTestSuite;
+			import com.test.services.mock.MockProxyTest;
 			
 			public function currentRunTestSuite():Array
 			{
 				var testsToRun:Array = new Array();
-				testsToRun.push(com.test.services.mock.MockTestSuite);
+				testsToRun.push(com.test.services.mock.MockProxyTest);
 				return testsToRun;
 			}
 			
 			
 			private function onCreationComplete():void
 			{
-				testRunner.runWithFlexUnit4Runner(currentRunTestSuite(), "zugspitze_servicesTests");
+				testRunner.runWithFlexUnit4Runner(currentRunTestSuite(), "zugspitze_servicesCoreTests");
 			}
 			
 		]]>
