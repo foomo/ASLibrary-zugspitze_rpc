@@ -23,9 +23,9 @@ package com.test.services.mock.operations
 		/**
 		 *
 		 */
-		public function GetComplexTypeOperation(proxy:MockProxy)
+		public function GetComplexTypeOperation(value:ComplexType, proxy:MockProxy)
 		{
-			super(proxy, 'getComplexType', [], GetComplexTypeOperationEvent);
+			super(proxy, 'getComplexType', [value], GetComplexTypeOperationEvent);
 		}
 
 		//-----------------------------------------------------------------------------------------

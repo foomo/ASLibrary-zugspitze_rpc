@@ -23,9 +23,9 @@ package com.test.services.mock.calls
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function GetComplexTypeCall()
+		public function GetComplexTypeCall(value:ComplexType)
 		{
-			super(METHOD_NAME, [], GetComplexTypeCallEvent);
+			super(METHOD_NAME, [value], GetComplexTypeCallEvent);
 		}
 
 		//-----------------------------------------------------------------------------------------

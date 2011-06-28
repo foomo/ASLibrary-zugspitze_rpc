@@ -77,7 +77,7 @@ package com.test.services.mock
 		[Test(async)]
 		public function testGetComplexTypeOperation():void
 		{
-			var operation:GetComplexTypeOperation = new GetComplexTypeOperation(this.proxy);
+			var operation:GetComplexTypeOperation = new GetComplexTypeOperation(new ComplexType, this.proxy);
 			Async.handleEvent(this, operation, GetComplexTypeOperationEvent.GET_COMPLEX_TYPE_OPERATION_COMPLETE, function(event:GetComplexTypeOperationEvent, ... parms) {
 				Assert.assertTrue(operation.result is ComplexType);
 				Assert.assertEquals(event.result, operation.result);

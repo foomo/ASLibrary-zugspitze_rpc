@@ -3,7 +3,7 @@ package com.test.services.mock.commands
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.calls.GetComplexTypeCall;
 	import com.test.services.mock.events.GetComplexTypeCallEvent;
-
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 	import org.foomo.zugspitze.commands.Command;
 	import org.foomo.zugspitze.commands.ICommand;
 	import org.foomo.zugspitze.core.IUnload;
@@ -22,6 +22,10 @@ package com.test.services.mock.commands
 		 */
 		public var proxy:MockProxy;
 		/**
+		 * 
+		 */
+		public var value:ComplexType;
+		/**
 		 * Returned call from the proxy
 		 */
 		protected var _methodCall:GetComplexTypeCall;
@@ -31,11 +35,13 @@ package com.test.services.mock.commands
 		//-----------------------------------------------------------------------------------------
 
 		/**
+		 * @param value ;
 		 * @param proxy Service proxy
 		 * @param setBusyStatus Set busy status while pending
 		 */
-		public function AbstractGetComplexTypeCommand(proxy:MockProxy, setBusyStatus:Boolean=false)
+		public function AbstractGetComplexTypeCommand(value:ComplexType, proxy:MockProxy, setBusyStatus:Boolean=false)
 		{
+			this.value = value;
 			this.proxy = proxy;
 			super(setBusyStatus);
 		}
@@ -49,7 +55,7 @@ package com.test.services.mock.commands
 		 */
 		public function execute():void
 		{
-			this._methodCall = this.proxy.getComplexType();
+			this._methodCall = this.proxy.getComplexType(this.value);
 			this._methodCall.addEventListener(GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_ERROR, this.abstractErrorHandler);
 			this._methodCall.addEventListener(GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_PROGRESS, this.abstractProgressHandler);
 			this._methodCall.addEventListener(GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_COMPLETE, this.abstractCompleteHandler);
@@ -61,6 +67,7 @@ package com.test.services.mock.commands
 		public function unload():void
 		{
 			this.proxy = null;
+			this.value = null;
 			if (this._methodCall) {
 				this._methodCall.removeEventListener(GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_ERROR, this.abstractErrorHandler);
 				this._methodCall.removeEventListener(GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_PROGRESS, this.abstractProgressHandler);

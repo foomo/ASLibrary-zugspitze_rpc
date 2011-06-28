@@ -16,6 +16,11 @@ package com.test.services.mock
 	import com.test.services.mock.calls.GetMessageCall;
 	import com.test.services.mock.calls.GetMessagesCall;
 	import com.test.services.mock.calls.GetComplexTypeMessageCall;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
+	import com.test.services.mock.vos.SharedObject;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.services.types.Exception;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.CustomException;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
 
 	public class MockProxy extends Proxy
 	{
@@ -99,9 +104,9 @@ package com.test.services.mock
 		/**
 		 *
 		 */
-		public function getComplexType():GetComplexTypeCall
+		public function getComplexType(value:ComplexType):GetComplexTypeCall
 		{
-			return zugspitze_internal::sendMethodCall(new GetComplexTypeCall());
+			return zugspitze_internal::sendMethodCall(new GetComplexTypeCall(value));
 		}
 
 		/**

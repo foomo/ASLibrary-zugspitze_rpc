@@ -23,6 +23,7 @@ package com.test.services.mock
 
 	import org.flexunit.async.Async;
 	import org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
 
 	public class MockProxyTest
@@ -130,9 +131,9 @@ package com.test.services.mock
 		}
 
 		[Test(async)]
-		public function testGetStandardTypes():void
+		public function testGetComplexType():void
 		{
-			Async.handleEvent(this, this.proxy.getComplexType(), GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_COMPLETE, function(event:GetComplexTypeCallEvent, ... parms):void {
+			Async.handleEvent(this, this.proxy.getComplexType(new ComplexType), GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_COMPLETE, function(event:GetComplexTypeCallEvent, ... parms):void {
 				Assert.assertTrue(event.result.typeBool is Boolean);
 				Assert.assertTrue(event.result.typeBoolArray is Array);
 				Assert.assertEquals(event.result.typeBoolArray[0], true);

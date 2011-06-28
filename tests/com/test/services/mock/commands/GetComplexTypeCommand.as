@@ -17,9 +17,9 @@ package com.test.services.mock.commands
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function GetComplexTypeCommand(proxy:MockProxy, setBusyStatus:Boolean=false)
+		public function GetComplexTypeCommand(value:ComplexType, proxy:MockProxy, setBusyStatus:Boolean=false)
 		{
-			super(proxy, setBusyStatus);
+			super(value, proxy, setBusyStatus);
 		}
 
 		//-----------------------------------------------------------------------------------------

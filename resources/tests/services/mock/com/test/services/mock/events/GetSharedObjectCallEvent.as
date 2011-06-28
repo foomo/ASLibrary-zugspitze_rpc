@@ -1,6 +1,6 @@
 package com.test.services.mock.events
 {
-		import com.test.services.mock.vos.SharedObject;
+	import com.test.services.mock.vos.SharedObject;
 	import com.test.services.mock.calls.GetSharedObjectCall;
 
 	import flash.events.Event;
