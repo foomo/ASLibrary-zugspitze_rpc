@@ -7,6 +7,7 @@ package com.test.services.mock
 	import com.test.services.mock.calls.GetStringCall;
 	import com.test.services.mock.calls.GetBooleanCall;
 	import com.test.services.mock.calls.GetObjectCall;
+	import com.test.services.mock.calls.GetArrayCall;
 	import com.test.services.mock.calls.GetComplexTypeCall;
 	import com.test.services.mock.calls.GetSharedObjectCall;
 	import com.test.services.mock.calls.GetExceptionCall;
@@ -85,6 +86,14 @@ package com.test.services.mock
 		public function getObject(value:Object):GetObjectCall
 		{
 			return zugspitze_internal::sendMethodCall(new GetObjectCall(value));
+		}
+
+		/**
+		 *
+		 */
+		public function getArray(value:Array):GetArrayCall
+		{
+			return zugspitze_internal::sendMethodCall(new GetArrayCall(value));
 		}
 
 		/**

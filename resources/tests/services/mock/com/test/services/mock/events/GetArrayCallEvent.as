@@ -1,7 +1,7 @@
 package com.test.services.mock.events
 {
-		import com.test.services.mock.vos.SharedObject;
-	import com.test.services.mock.calls.GetSharedObjectCall;
+	
+	import com.test.services.mock.calls.GetArrayCall;
 
 	import flash.events.Event;
 
@@ -10,21 +10,21 @@ package com.test.services.mock.events
 	/**
 	 *
 	 */
-	public class GetSharedObjectCallEvent extends ProxyMethodCallEvent
+	public class GetArrayCallEvent extends ProxyMethodCallEvent
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constants
 		//-----------------------------------------------------------------------------------------
 
-		public static const GET_SHARED_OBJECT_CALL_COMPLETE:String = "getSharedObjectCallComplete";
-		public static const GET_SHARED_OBJECT_CALL_PROGRESS:String = "getSharedObjectCallProgress";
-		public static const GET_SHARED_OBJECT_CALL_ERROR:String = "getSharedObjectCallError";
+		public static const GET_ARRAY_CALL_COMPLETE:String = "getArrayCallComplete";
+		public static const GET_ARRAY_CALL_PROGRESS:String = "getArrayCallProgress";
+		public static const GET_ARRAY_CALL_ERROR:String = "getArrayCallError";
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function GetSharedObjectCallEvent(type:String, result:*=null, error:String='', exception:*=null, messages:Array=null, bytesTotal:Number=0, bytesLoaded:Number=0)
+		public function GetArrayCallEvent(type:String, result:*=null, error:String='', exception:*=null, messages:Array=null, bytesTotal:Number=0, bytesLoaded:Number=0)
 		{
 			super(type, result, error, exception, messages, bytesTotal, bytesLoaded);
 		}
@@ -36,7 +36,7 @@ package com.test.services.mock.events
 		/**
 		 * Method call result
 		 */
-		public function get result():SharedObject
+		public function get result():Array
 		{
 			return this.untypedResult;
 		}

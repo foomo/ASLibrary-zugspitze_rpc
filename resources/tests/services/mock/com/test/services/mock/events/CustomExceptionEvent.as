@@ -3,7 +3,7 @@ package com.test.services.mock.events
 	import flash.events.Event;
 
 	/**
-	 *
+	 * 
 	 */
 	public class CustomExceptionEvent extends Event
 	{
@@ -18,7 +18,7 @@ package com.test.services.mock.events
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * 
 		 */
 		private var _note:String;
 
@@ -37,7 +37,7 @@ package com.test.services.mock.events
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * 
 		 */
 		public function get note():String
 		{

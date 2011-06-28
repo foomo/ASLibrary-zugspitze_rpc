@@ -1,31 +1,31 @@
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetSharedObjectCallEvent;
+	import com.test.services.mock.events.GetArrayCallEvent;
 	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
-		import com.test.services.mock.vos.SharedObject;
+	
 
-	[Event(name="getSharedObjectCallComplete", type="com.test.services.mock.events.GetSharedObjectCallEvent")]
-	[Event(name="getSharedObjectCallProgress", type="com.test.services.mock.events.GetSharedObjectCallEvent")]
-	[Event(name="getSharedObjectCallError", type="com.test.services.mock.events.GetSharedObjectCallEvent")]
+	[Event(name="getArrayCallComplete", type="com.test.services.mock.events.GetArrayCallEvent")]
+	[Event(name="getArrayCallProgress", type="com.test.services.mock.events.GetArrayCallEvent")]
+	[Event(name="getArrayCallError", type="com.test.services.mock.events.GetArrayCallEvent")]
 
 	/**
 	 *
 	 */
-	public class GetSharedObjectCall extends ProxyMethodCall
+	public class GetArrayCall extends ProxyMethodCall
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constants
 		//-----------------------------------------------------------------------------------------
 
-		public static const METHOD_NAME:String = 'getSharedObject';
+		public static const METHOD_NAME:String = 'getArray';
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function GetSharedObjectCall()
+		public function GetArrayCall(value:Array)
 		{
-			super(METHOD_NAME, [], GetSharedObjectCallEvent);
+			super(METHOD_NAME, [value], GetArrayCallEvent);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ package com.test.services.mock.calls
 		/**
 		 * Method call result
 		 */
-		public function get result():SharedObject
+		public function get result():Array
 		{
 			return this.methodReply.value;
 		}

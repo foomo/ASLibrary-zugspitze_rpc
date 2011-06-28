@@ -1,6 +1,6 @@
 package com.test.services.mock.operations
 {
-	import com.test.services.mock.vos.SharedObject;
+		import com.test.services.mock.vos.SharedObject;
 
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetSharedObjectOperationEvent;
