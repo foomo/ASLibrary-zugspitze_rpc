@@ -207,7 +207,7 @@ package com.test.services.mock
 		// TODO: set permanent endpoint
 		public function testCommunicationError():void
 		{
-			this.proxy.endPoint = 'http://foomo.bestbytes.net/foomo/modules/Foomo.Zugspitze/schemas/project.xsd';
+			this.proxy.endPoint = 'http://www.foomo.org/foomo/modules/Foomo.Zugspitze/schemas/project.xsd';
 			Async.handleEvent(this, this.proxy, ProxyErrorEvent.COMMUNICATION_ERROR, function(event:ProxyErrorEvent, ... parms):void {
 				Assert.assertTrue(true);
 			});
