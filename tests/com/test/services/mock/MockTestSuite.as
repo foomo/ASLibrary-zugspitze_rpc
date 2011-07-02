@@ -25,7 +25,7 @@ package com.test.services.mock
 	
 	/**
 	 * @link www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author franklin <franklin@weareinteractive.com>
 	 */
 	public class MockTestSuite

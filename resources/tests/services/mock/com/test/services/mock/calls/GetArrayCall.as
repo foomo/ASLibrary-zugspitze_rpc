@@ -25,8 +25,8 @@ package com.test.services.mock.calls
 	[Event(name="getArrayCallError", type="com.test.services.mock.events.GetArrayCallEvent")]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class GetArrayCall extends ProxyMethodCall

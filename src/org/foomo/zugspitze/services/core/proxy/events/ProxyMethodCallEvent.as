@@ -27,7 +27,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 	 * Define your own ProxyMethodCallEvent class and it"s event types
 	 *
 	 * @link www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author franklin <franklin@weareinteractive.com>
 	 */
 	public class ProxyMethodCallEvent extends Event

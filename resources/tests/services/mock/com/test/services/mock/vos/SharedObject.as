@@ -20,8 +20,8 @@ package com.test.services.mock.vos
 	[RemoteClass(alias='Foomo.Zugspitze.Services.Mock.SharedObject')]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class SharedObject

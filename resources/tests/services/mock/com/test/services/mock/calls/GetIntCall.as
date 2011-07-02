@@ -24,8 +24,8 @@ package com.test.services.mock.calls
 	[Event(name="getIntCallError", type="com.test.services.mock.events.GetIntCallEvent")]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class GetIntCall extends ProxyMethodCall

@@ -24,8 +24,8 @@ package com.test.services.mock.calls
 	[Event(name="getBooleanCallError", type="com.test.services.mock.events.GetBooleanCallEvent")]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class GetBooleanCall extends ProxyMethodCall

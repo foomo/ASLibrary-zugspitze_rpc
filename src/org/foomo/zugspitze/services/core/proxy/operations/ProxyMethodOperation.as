@@ -29,7 +29,7 @@ package org.foomo.zugspitze.services.core.proxy.operations
 	
 	/**
 	 * @link www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author franklin <franklin@weareinteractive.com>
 	 */
 	public class ProxyMethodOperation extends Operation implements IUnload

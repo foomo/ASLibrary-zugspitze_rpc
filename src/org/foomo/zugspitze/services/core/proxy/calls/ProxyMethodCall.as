@@ -38,7 +38,7 @@ package org.foomo.zugspitze.services.core.proxy.calls
 	 * Define your MethodCall class and and define your custom event class.
 	 *
 	 * @link www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author franklin <franklin@weareinteractive.com>
 	 */
 	public class ProxyMethodCall extends EventDispatcher implements IUnload

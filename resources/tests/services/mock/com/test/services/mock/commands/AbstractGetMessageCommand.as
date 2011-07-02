@@ -27,8 +27,8 @@ package com.test.services.mock.commands
 	/**
 	 * Create your own command instance and override the protected event handlers
 	 *
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class AbstractGetMessageCommand extends Command implements ICommand, IUnload

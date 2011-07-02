@@ -28,8 +28,8 @@ package com.test.services.mock.operations
 	[Event(name="GetExceptionOperationError", type="com.test.services.mock.events.GetExceptionOperationEvent")]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class GetExceptionOperation extends ProxyMethodOperation

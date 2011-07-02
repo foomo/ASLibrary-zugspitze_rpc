@@ -19,8 +19,8 @@ package com.test.services.mock.events
 	import flash.events.Event;
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class CustomExceptionEvent extends Event

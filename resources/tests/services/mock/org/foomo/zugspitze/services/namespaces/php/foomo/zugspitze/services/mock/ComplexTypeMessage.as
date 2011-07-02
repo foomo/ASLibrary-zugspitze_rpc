@@ -20,8 +20,8 @@ package org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.moc
 	[RemoteClass(alias='Foomo.Zugspitze.Services.Mock.ComplexTypeMessage')]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class ComplexTypeMessage

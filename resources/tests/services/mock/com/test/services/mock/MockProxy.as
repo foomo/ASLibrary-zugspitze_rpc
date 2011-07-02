@@ -39,8 +39,8 @@ package com.test.services.mock
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class MockProxy extends Proxy

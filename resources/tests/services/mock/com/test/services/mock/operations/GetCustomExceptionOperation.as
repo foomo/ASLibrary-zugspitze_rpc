@@ -30,8 +30,8 @@ package com.test.services.mock.operations
 	[Event(name="GetCustomExceptionOperationError", type="com.test.services.mock.events.GetCustomExceptionOperationEvent")]
 
 	/**
-	 * @link    www.foomo.org
-	 * @license www.gnu.org/licenses/lgpl.txt
+	 * @link    http://www.foomo.org
+	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
 	public class GetCustomExceptionOperation extends ProxyMethodOperation
