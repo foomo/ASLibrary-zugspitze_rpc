@@ -17,8 +17,8 @@
 package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.calls.GetIntCall;
-	import com.test.services.mock.events.GetIntCallEvent;
+	import com.test.services.mock.calls.GetArrayCall;
+	import com.test.services.mock.events.GetArrayCallEvent;
 	
 	import org.foomo.zugspitze.commands.Command;
 	import org.foomo.zugspitze.commands.ICommand;
@@ -31,7 +31,7 @@ package com.test.services.mock.commands
 	 * @license www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class AbstractGetIntCommand extends Command implements ICommand, IUnload
+	public class AbstractGetArrayCommand extends Command implements ICommand, IUnload
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
@@ -44,11 +44,11 @@ package com.test.services.mock.commands
 		/**
 		 * 
 		 */
-		public var value:int;
+		public var value:Array;
 		/**
 		 * Returned call from the proxy
 		 */
-		protected var _methodCall:GetIntCall;
+		protected var _methodCall:GetArrayCall;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
@@ -59,7 +59,7 @@ package com.test.services.mock.commands
 		 * @param proxy Service proxy
 		 * @param setBusyStatus Set busy status while pending
 		 */
-		public function AbstractGetIntCommand(value:int, proxy:MockProxy, setBusyStatus:Boolean=false)
+		public function AbstractGetArrayCommand(value:Array, proxy:MockProxy, setBusyStatus:Boolean=false)
 		{
 			this.value = value;
 			this.proxy = proxy;
@@ -75,10 +75,10 @@ package com.test.services.mock.commands
 		 */
 		public function execute():void
 		{
-			this._methodCall = this.proxy.getInt(this.value);
-			this._methodCall.addEventListener(GetIntCallEvent.GET_INT_CALL_ERROR, this.abstractErrorHandler);
-			this._methodCall.addEventListener(GetIntCallEvent.GET_INT_CALL_PROGRESS, this.abstractProgressHandler);
-			this._methodCall.addEventListener(GetIntCallEvent.GET_INT_CALL_COMPLETE, this.abstractCompleteHandler);
+			this._methodCall = this.proxy.getArray(this.value);
+			this._methodCall.addEventListener(GetArrayCallEvent.GET_ARRAY_CALL_ERROR, this.abstractErrorHandler);
+			this._methodCall.addEventListener(GetArrayCallEvent.GET_ARRAY_CALL_PROGRESS, this.abstractProgressHandler);
+			this._methodCall.addEventListener(GetArrayCallEvent.GET_ARRAY_CALL_COMPLETE, this.abstractCompleteHandler);
 		}
 
 		/**
@@ -87,11 +87,11 @@ package com.test.services.mock.commands
 		public function unload():void
 		{
 			this.proxy = null;
-			this.value = 0;
+			this.value = null;
 			if (this._methodCall) {
-				this._methodCall.removeEventListener(GetIntCallEvent.GET_INT_CALL_ERROR, this.abstractErrorHandler);
-				this._methodCall.removeEventListener(GetIntCallEvent.GET_INT_CALL_PROGRESS, this.abstractProgressHandler);
-				this._methodCall.removeEventListener(GetIntCallEvent.GET_INT_CALL_COMPLETE, this.abstractCompleteHandler);
+				this._methodCall.removeEventListener(GetArrayCallEvent.GET_ARRAY_CALL_ERROR, this.abstractErrorHandler);
+				this._methodCall.removeEventListener(GetArrayCallEvent.GET_ARRAY_CALL_PROGRESS, this.abstractProgressHandler);
+				this._methodCall.removeEventListener(GetArrayCallEvent.GET_ARRAY_CALL_COMPLETE, this.abstractCompleteHandler);
 				this._methodCall = null;
 			}
 		}
@@ -105,7 +105,7 @@ package com.test.services.mock.commands
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractProgressHandler(event:GetIntCallEvent):void
+		protected function abstractProgressHandler(event:GetArrayCallEvent):void
 		{
 			// Overwrite this method in your implementation class
 		}
@@ -115,7 +115,7 @@ package com.test.services.mock.commands
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractCompleteHandler(event:GetIntCallEvent):void
+		protected function abstractCompleteHandler(event:GetArrayCallEvent):void
 		{
 			// Overwrite this method in your implementation class
 			this.dispatchCommandCompleteEvent();
@@ -126,7 +126,7 @@ package com.test.services.mock.commands
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractErrorHandler(event:GetIntCallEvent):void
+		protected function abstractErrorHandler(event:GetArrayCallEvent):void
 		{
 			// Overwrite this method in your implementation class
 			this.dispatchCommandErrorEvent(event.error);

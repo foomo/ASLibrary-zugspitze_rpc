@@ -16,23 +16,23 @@
  */
 package com.test.services.mock.operations
 {
-	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
+	
 
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetComplexTypeOperationEvent;
+	import com.test.services.mock.events.GetArrayOperationEvent;
 
 	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
 
-	[Event(name="GetComplexTypeOperationComplete", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
-	[Event(name="GetComplexTypeOperationProgress", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
-	[Event(name="GetComplexTypeOperationError", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
+	[Event(name="GetArrayOperationComplete", type="com.test.services.mock.events.GetArrayOperationEvent")]
+	[Event(name="GetArrayOperationProgress", type="com.test.services.mock.events.GetArrayOperationEvent")]
+	[Event(name="GetArrayOperationError", type="com.test.services.mock.events.GetArrayOperationEvent")]
 
 	/**
 	 * @link    www.foomo.org
 	 * @license www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class GetComplexTypeOperation extends ProxyMethodOperation
+	public class GetArrayOperation extends ProxyMethodOperation
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
@@ -41,9 +41,9 @@ package com.test.services.mock.operations
 		/**
 		 *
 		 */
-		public function GetComplexTypeOperation(value:ComplexType, proxy:MockProxy)
+		public function GetArrayOperation(value:Array, proxy:MockProxy)
 		{
-			super(proxy, 'getComplexType', [value], GetComplexTypeOperationEvent);
+			super(proxy, 'getArray', [value], GetArrayOperationEvent);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ package com.test.services.mock.operations
 		/**
 		 *
 		 */
-		public function get result():ComplexType
+		public function get result():Array
 		{
 			return this.untypedResult;
 		}

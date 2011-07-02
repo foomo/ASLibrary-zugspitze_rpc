@@ -14,36 +14,36 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * the foomo Opensource Framework. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.test.services.mock.operations
+package com.test.services.mock.calls
 {
-	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
+	import com.test.services.mock.events.GetArrayCallEvent;
+	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
+	
 
-	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetComplexTypeOperationEvent;
-
-	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
-
-	[Event(name="GetComplexTypeOperationComplete", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
-	[Event(name="GetComplexTypeOperationProgress", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
-	[Event(name="GetComplexTypeOperationError", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
+	[Event(name="getArrayCallComplete", type="com.test.services.mock.events.GetArrayCallEvent")]
+	[Event(name="getArrayCallProgress", type="com.test.services.mock.events.GetArrayCallEvent")]
+	[Event(name="getArrayCallError", type="com.test.services.mock.events.GetArrayCallEvent")]
 
 	/**
 	 * @link    www.foomo.org
 	 * @license www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class GetComplexTypeOperation extends ProxyMethodOperation
+	public class GetArrayCall extends ProxyMethodCall
 	{
+		//-----------------------------------------------------------------------------------------
+		// ~ Constants
+		//-----------------------------------------------------------------------------------------
+
+		public static const METHOD_NAME:String = 'getArray';
+
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		/**
-		 *
-		 */
-		public function GetComplexTypeOperation(value:ComplexType, proxy:MockProxy)
+		public function GetArrayCall(value:Array)
 		{
-			super(proxy, 'getComplexType', [value], GetComplexTypeOperationEvent);
+			super(METHOD_NAME, [value], GetArrayCallEvent);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -51,11 +51,11 @@ package com.test.services.mock.operations
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * Method call result
 		 */
-		public function get result():ComplexType
+		public function get result():Array
 		{
-			return this.untypedResult;
+			return this.methodReply.value;
 		}
 	}
 }
