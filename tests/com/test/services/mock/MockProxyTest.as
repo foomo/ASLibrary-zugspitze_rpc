@@ -18,6 +18,7 @@ package com.test.services.mock
 {
 	import com.test.services.mock.events.CustomExceptionEvent;
 	import com.test.services.mock.events.ExceptionEvent;
+	import com.test.services.mock.events.GetArrayCallEvent;
 	import com.test.services.mock.events.GetBooleanCallEvent;
 	import com.test.services.mock.events.GetComplexTypeCallEvent;
 	import com.test.services.mock.events.GetComplexTypeMessageCallEvent;
@@ -38,6 +39,7 @@ package com.test.services.mock
 
 	import org.flexunit.async.Async;
 	import org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
 
 	/**
@@ -140,9 +142,19 @@ package com.test.services.mock
 		}
 
 		[Test(async)]
-		public function testGetStandardTypes():void
+		public function testGetArray():void
 		{
-			Async.handleEvent(this, this.proxy.getComplexType(), GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_COMPLETE, function(event:GetComplexTypeCallEvent, ... parms):void {
+			var value:Array = ['foo', 'bar'];
+			Async.handleEvent(this, this.proxy.getArray(value), GetArrayCallEvent.GET_ARRAY_CALL_COMPLETE, function(event:GetArrayCallEvent, ... parms):void {
+				Assert.assertEquals(ObjectUtil.compare(event.result, value), 0);
+				Assert.assertTrue(event.result is Array);
+			});
+		}
+
+		[Test(async)]
+		public function testGetComplexType():void
+		{
+			Async.handleEvent(this, this.proxy.getComplexType(new ComplexType), GetComplexTypeCallEvent.GET_COMPLEX_TYPE_CALL_COMPLETE, function(event:GetComplexTypeCallEvent, ... parms):void {
 				Assert.assertTrue(event.result.typeBool is Boolean);
 				Assert.assertTrue(event.result.typeBoolArray is Array);
 				Assert.assertEquals(event.result.typeBoolArray[0], true);
@@ -195,7 +207,7 @@ package com.test.services.mock
 		// TODO: set permanent endpoint
 		public function testCommunicationError():void
 		{
-			this.proxy.endPoint = 'http://foomo.bestbytes.net/index.php';
+			this.proxy.endPoint = 'http://foomo.bestbytes.net/foomo/modules/Foomo.Zugspitze/schemas/project.xsd';
 			Async.handleEvent(this, this.proxy, ProxyErrorEvent.COMMUNICATION_ERROR, function(event:ProxyErrorEvent, ... parms):void {
 				Assert.assertTrue(true);
 			});

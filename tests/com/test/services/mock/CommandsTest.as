@@ -92,7 +92,7 @@ package com.test.services.mock
 		[Test(async)]
 		public function testGetComplexTypeCommand():void
 		{
-			var cmd:GetComplexTypeCommand = new GetComplexTypeCommand(this.proxy);
+			var cmd:GetComplexTypeCommand = new GetComplexTypeCommand(new ComplexType, this.proxy);
 			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms) {
 				Assert.assertTrue(cmd.result is ComplexType);
 			});
