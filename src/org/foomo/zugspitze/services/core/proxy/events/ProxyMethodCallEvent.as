@@ -18,7 +18,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 {
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.utils.ClassUtils;
+	import org.foomo.flash.utils.ClassUtil;
 
 	[ExcludeClass]
 
@@ -137,7 +137,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 		 */
 		override public function clone():Event
 		{
-			var eventClass:Class = ClassUtils.getClass(this);
+			var eventClass:Class = ClassUtil.getClass(this);
 			return new eventClass(this.type, this.untypedResult, this.error, this.exception, this.messages, this.bytesTotal, this.bytesLoaded);
 		}
 
@@ -146,7 +146,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 		 */
 		override public function toString():String
 		{
-			return formatToString(ClassUtils.getClassName(this), "result", "error", "exception", "messages", "bytesTotal", "bytesLoaded");
+			return formatToString(ClassUtil.getClassName(this), "result", "error", "exception", "messages", "bytesTotal", "bytesLoaded");
 		}
 	}
 }

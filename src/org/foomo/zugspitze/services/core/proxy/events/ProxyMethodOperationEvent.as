@@ -18,11 +18,11 @@ package org.foomo.zugspitze.services.core.proxy.events
 {
 	import flash.events.Event;
 
+	import org.foomo.flash.utils.ClassUtil;
 	import org.foomo.zugspitze.events.OperationEvent;
-	import org.foomo.zugspitze.utils.ClassUtils;
 
 	[ExcludeClass]
-	
+
 	/**
 	 * @link www.foomo.org
 	 * @license http://www.gnu.org/licenses/lgpl.txt
@@ -71,7 +71,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 		 */
 		override public function clone():Event
 		{
-			var eventClass:Class = ClassUtils.getClass(this);
+			var eventClass:Class = ClassUtil.getClass(this);
 			return new eventClass(this.type, this.untypedResult, this.untypedError, this.messages, this.total, this.progress);
 		}
 
@@ -80,7 +80,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 		 */
 		override public function cloneWithType(type:String):OperationEvent
 		{
-			var eventClass:Class = ClassUtils.getClass(this);
+			var eventClass:Class = ClassUtil.getClass(this);
 			return new eventClass(type, this.untypedResult, this.untypedError, this.messages, this.total, this.progress);
 		}
 
@@ -89,7 +89,7 @@ package org.foomo.zugspitze.services.core.proxy.events
 		 */
 		override public function toString():String
 		{
-			return formatToString(ClassUtils.getClassName(this), 'result', 'error', 'messages', 'total', 'progress');
+			return formatToString(ClassUtil.getClassName(this), 'result', 'error', 'messages', 'total', 'progress');
 		}
 	}
 }

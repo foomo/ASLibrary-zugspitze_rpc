@@ -6,6 +6,7 @@
 	<description>The Zugspitze Service Library.</description>
 	<exclude>true</exclude>
 	<dependencies>
+		<id>org.foomo.flash</id>
 		<id>org.foomo.zugspitze.core</id>
 		<id>org.foomo.zugspitze.services.core.rpc</id>
 	</dependencies>

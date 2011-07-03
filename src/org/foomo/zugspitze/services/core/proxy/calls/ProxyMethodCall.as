@@ -22,8 +22,7 @@ package org.foomo.zugspitze.services.core.proxy.calls
 	import flash.events.ProgressEvent;
 	import flash.events.SecurityErrorEvent;
 
-	import org.foomo.zugspitze.core.IUnload;
-	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
+	import org.foomo.flash.core.IUnload;
 	import org.foomo.zugspitze.services.core.rpc.RPCMethodCallToken;
 	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
 	import org.foomo.zugspitze.services.core.rpc.events.RPCMethodCallEvent;

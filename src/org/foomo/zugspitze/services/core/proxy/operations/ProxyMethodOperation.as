@@ -19,14 +19,14 @@ package org.foomo.zugspitze.services.core.proxy.operations
 
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.core.IUnload;
+	import org.foomo.flash.core.IUnload;
 	import org.foomo.zugspitze.operations.Operation;
 	import org.foomo.zugspitze.services.core.proxy.Proxy;
 	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
 
 	[ExcludeClass]
-	
+
 	/**
 	 * @link www.foomo.org
 	 * @license http://www.gnu.org/licenses/lgpl.txt
