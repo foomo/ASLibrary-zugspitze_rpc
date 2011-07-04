@@ -14,15 +14,15 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * the foomo Opensource Framework. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.foomo.zugspitze.services.core.proxy
+package org.foomo.zugspitze.services.proxy
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
 	import flash.events.IOErrorEvent;
 	import flash.events.SecurityErrorEvent;
 
-	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
-	import org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent;
+	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent;
 	import org.foomo.zugspitze.services.core.rpc.RPCClient;
 	import org.foomo.zugspitze.services.core.rpc.RPCMethodCallToken;
 	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
@@ -31,9 +31,9 @@ package org.foomo.zugspitze.services.core.proxy
 	import org.foomo.zugspitze.services.core.rpc.events.RPCTransportErrorEvent;
 	import org.foomo.zugspitze.zugspitze_internal;
 
-	[Event(name="ioError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
-	[Event(name="securityError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
-	[Event(name="communicationError", type="org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent")]
+	[Event(name="ioError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
+	[Event(name="securityError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
+	[Event(name="communicationError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
 	[ExcludeClass]
 	
 	/**

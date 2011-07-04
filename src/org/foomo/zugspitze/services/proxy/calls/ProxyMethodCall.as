@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * the foomo Opensource Framework. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.foomo.zugspitze.services.core.proxy.calls
+package org.foomo.zugspitze.services.proxy.calls
 {
 	import flash.events.Event;
 	import flash.events.EventDispatcher;
@@ -22,12 +22,12 @@ package org.foomo.zugspitze.services.core.proxy.calls
 	import flash.events.ProgressEvent;
 	import flash.events.SecurityErrorEvent;
 
-	import org.foomo.flash.core.IUnload;
-	import org.foomo.zugspitze.services.core.rpc.RPCMethodCallToken;
-	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
-	import org.foomo.zugspitze.services.core.rpc.events.RPCMethodCallEvent;
-	import org.foomo.zugspitze.services.core.rpc.events.RPCTransportErrorEvent;
-	import org.foomo.zugspitze.services.core.rpc.protocol.reply.MethodReply;
+	import org.foomo.core.IUnload;
+	import org.foomo.zugspitze.services.rpc.RPCMethodCallToken;
+	import org.foomo.zugspitze.services.rpc.RPCTransport;
+	import org.foomo.zugspitze.services.rpc.events.RPCMethodCallEvent;
+	import org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent;
+	import org.foomo.zugspitze.services.rpc.protocol.reply.MethodReply;
 	import org.foomo.zugspitze.zugspitze_internal;
 
 	[ExcludeClass]
