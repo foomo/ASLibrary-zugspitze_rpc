@@ -23,19 +23,18 @@ package org.foomo.zugspitze.services.proxy
 
 	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent;
-	import org.foomo.zugspitze.services.core.rpc.RPCClient;
-	import org.foomo.zugspitze.services.core.rpc.RPCMethodCallToken;
-	import org.foomo.zugspitze.services.core.rpc.RPCTransport;
-	import org.foomo.zugspitze.services.core.rpc.events.RPCClientErrorEvent;
-	import org.foomo.zugspitze.services.core.rpc.events.RPCClientEvent;
-	import org.foomo.zugspitze.services.core.rpc.events.RPCTransportErrorEvent;
+	import org.foomo.zugspitze.services.rpc.RPCClient;
+	import org.foomo.zugspitze.services.rpc.RPCMethodCallToken;
+	import org.foomo.zugspitze.services.rpc.RPCTransport;
+	import org.foomo.zugspitze.services.rpc.events.RPCClientErrorEvent;
+	import org.foomo.zugspitze.services.rpc.events.RPCTransportErrorEvent;
 	import org.foomo.zugspitze.zugspitze_internal;
 
 	[Event(name="ioError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
 	[Event(name="securityError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
 	[Event(name="communicationError", type="org.foomo.zugspitze.services.proxy.events.ProxyErrorEvent")]
 	[ExcludeClass]
-	
+
 	/**
 	 * @link www.foomo.org
 	 * @license http://www.gnu.org/licenses/lgpl.txt
