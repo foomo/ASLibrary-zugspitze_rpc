@@ -23,7 +23,7 @@ package com.test.services.mock.operations
 	import org.foomo.zugspitze.services.namespaces.php.foomo.services.types.Exception;
 	import com.test.services.mock.events.ExceptionEvent;
 
-	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
 
 	[Event(name="GetCustomExceptionOperationComplete", type="com.test.services.mock.events.GetCustomExceptionOperationEvent")]
 	[Event(name="GetCustomExceptionOperationProgress", type="com.test.services.mock.events.GetCustomExceptionOperationEvent")]

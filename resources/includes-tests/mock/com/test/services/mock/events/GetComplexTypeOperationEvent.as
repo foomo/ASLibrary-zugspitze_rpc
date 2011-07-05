@@ -18,7 +18,7 @@ package com.test.services.mock.events
 {
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 
-	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodOperationEvent;
+	import org.foomo.zugspitze.rpc.events.ProxyMethodOperationEvent;
 
 	/**
 	 * @link    http://www.foomo.org

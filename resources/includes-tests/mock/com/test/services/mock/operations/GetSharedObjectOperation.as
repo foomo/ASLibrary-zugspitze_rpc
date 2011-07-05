@@ -21,7 +21,7 @@ package com.test.services.mock.operations
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetSharedObjectOperationEvent;
 
-	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
 
 	[Event(name="GetSharedObjectOperationComplete", type="com.test.services.mock.events.GetSharedObjectOperationEvent")]
 	[Event(name="GetSharedObjectOperationProgress", type="com.test.services.mock.events.GetSharedObjectOperationEvent")]

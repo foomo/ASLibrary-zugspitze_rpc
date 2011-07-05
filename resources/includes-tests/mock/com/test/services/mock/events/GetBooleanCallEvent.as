@@ -20,7 +20,7 @@ package com.test.services.mock.events
 
 	import flash.events.Event;
 
-	import org.foomo.zugspitze.services.core.proxy.events.ProxyMethodCallEvent;
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 
 	/**
 	 * @link    http://www.foomo.org

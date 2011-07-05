@@ -21,7 +21,7 @@ package com.test.services.mock.operations
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetArrayOperationEvent;
 
-	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
 
 	[Event(name="GetArrayOperationComplete", type="com.test.services.mock.events.GetArrayOperationEvent")]
 	[Event(name="GetArrayOperationProgress", type="com.test.services.mock.events.GetArrayOperationEvent")]

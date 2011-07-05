@@ -17,7 +17,7 @@
 package com.test.services.mock.calls
 {
 	import com.test.services.mock.events.GetMessageCallEvent;
-	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
 
 	[Event(name="getMessageCallComplete", type="com.test.services.mock.events.GetMessageCallEvent")]
 	[Event(name="getMessageCallProgress", type="com.test.services.mock.events.GetMessageCallEvent")]

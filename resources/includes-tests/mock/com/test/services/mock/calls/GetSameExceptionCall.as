@@ -16,12 +16,12 @@
  */
 package com.test.services.mock.calls
 {
-	import org.foomo.zugspitze.services.core.rpc.events.RPCMethodCallEvent;
+	import org.foomo.rpc.events.RPCMethodCallEvent;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.services.types.Exception;
 	import com.test.services.mock.events.ExceptionEvent;
 
 	import com.test.services.mock.events.GetSameExceptionCallEvent;
-	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
 
 	[Event(name="getSameExceptionCallComplete", type="com.test.services.mock.events.GetSameExceptionCallEvent")]
 	[Event(name="getSameExceptionCallProgress", type="com.test.services.mock.events.GetSameExceptionCallEvent")]

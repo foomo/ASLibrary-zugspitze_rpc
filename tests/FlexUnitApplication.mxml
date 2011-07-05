@@ -21,7 +21,7 @@
 			
 			private function onCreationComplete():void
 			{
-				testRunner.runWithFlexUnit4Runner(currentRunTestSuite(), "zugspitze_servicesCoreTests");
+				testRunner.runWithFlexUnit4Runner(currentRunTestSuite(), "zugspitze_rpcTests");
 			}
 			
 		]]>

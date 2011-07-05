@@ -19,7 +19,7 @@ package com.test.services.mock.operations
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetMessageOperationEvent;
 
-	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
 
 	[Event(name="GetMessageOperationComplete", type="com.test.services.mock.events.GetMessageOperationEvent")]
 	[Event(name="GetMessageOperationProgress", type="com.test.services.mock.events.GetMessageOperationEvent")]

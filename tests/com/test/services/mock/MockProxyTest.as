@@ -38,7 +38,7 @@ package com.test.services.mock
 	import mx.utils.ObjectUtil;
 
 	import org.flexunit.async.Async;
-	import org.foomo.zugspitze.services.core.proxy.events.ProxyErrorEvent;
+	import org.foomo.zugspitze.rpc.events.ProxyErrorEvent;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexTypeMessage;
 

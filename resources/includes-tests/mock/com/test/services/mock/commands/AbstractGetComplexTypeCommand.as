@@ -22,7 +22,7 @@ package com.test.services.mock.commands
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 	import org.foomo.zugspitze.commands.Command;
 	import org.foomo.zugspitze.commands.ICommand;
-	import org.foomo.zugspitze.core.IUnload;
+	import org.foomo.core.IUnload;
 
 	/**
 	 * Create your own command instance and override the protected event handlers
@@ -82,7 +82,7 @@ package com.test.services.mock.commands
 		}
 
 		/**
-		 * @see org.foomo.zugspitze.core.IUnload
+		 * @see org.foomo.flash.core.IUnload
 		 */
 		public function unload():void
 		{

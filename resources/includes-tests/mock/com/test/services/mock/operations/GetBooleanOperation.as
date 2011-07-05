@@ -19,7 +19,7 @@ package com.test.services.mock.operations
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.events.GetBooleanOperationEvent;
 
-	import org.foomo.zugspitze.services.core.proxy.operations.ProxyMethodOperation;
+	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
 
 	[Event(name="GetBooleanOperationComplete", type="com.test.services.mock.events.GetBooleanOperationEvent")]
 	[Event(name="GetBooleanOperationProgress", type="com.test.services.mock.events.GetBooleanOperationEvent")]

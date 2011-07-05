@@ -17,7 +17,7 @@
 package com.test.services.mock.calls
 {
 	import com.test.services.mock.events.GetSharedObjectCallEvent;
-	import org.foomo.zugspitze.services.core.proxy.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
 	import com.test.services.mock.vos.SharedObject;
 
 	[Event(name="getSharedObjectCallComplete", type="com.test.services.mock.events.GetSharedObjectCallEvent")]

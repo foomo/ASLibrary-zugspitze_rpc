@@ -89,7 +89,7 @@ package com.test.services.mock
 		{
 			var value:String = 'foobar';
 			var operation:GetStringOperation = new GetStringOperation(value, this.proxy);
-			Async.handleEvent(this, operation, GetStringOperationEvent.GET_STRING_OPERATION_COMPLETE, function(event:GetStringOperationEvent, ... parms) {
+			Async.handleEvent(this, operation, GetStringOperationEvent.GET_STRING_OPERATION_COMPLETE, function(event:GetStringOperationEvent, ... parms):void {
 				Assert.assertEquals(event.result, value);
 				Assert.assertEquals(operation.result, value);
 			});
@@ -99,7 +99,7 @@ package com.test.services.mock
 		public function testGetComplexTypeOperation():void
 		{
 			var operation:GetComplexTypeOperation = new GetComplexTypeOperation(new ComplexType, this.proxy);
-			Async.handleEvent(this, operation, GetComplexTypeOperationEvent.GET_COMPLEX_TYPE_OPERATION_COMPLETE, function(event:GetComplexTypeOperationEvent, ... parms) {
+			Async.handleEvent(this, operation, GetComplexTypeOperationEvent.GET_COMPLEX_TYPE_OPERATION_COMPLETE, function(event:GetComplexTypeOperationEvent, ... parms):void {
 				Assert.assertTrue(operation.result is ComplexType);
 				Assert.assertEquals(event.result, operation.result);
 			});
@@ -109,7 +109,7 @@ package com.test.services.mock
 		public function testGetSharedObjectOperation():void
 		{
 			var operation:GetSharedObjectOperation = new GetSharedObjectOperation(this.proxy);
-			Async.handleEvent(this, operation, GetSharedObjectOperationEvent.GET_SHARED_OBJECT_OPERATION_COMPLETE, function(event:GetSharedObjectOperationEvent, ... parms) {
+			Async.handleEvent(this, operation, GetSharedObjectOperationEvent.GET_SHARED_OBJECT_OPERATION_COMPLETE, function(event:GetSharedObjectOperationEvent, ... parms):void {
 				Assert.assertTrue(operation.result is SharedObject);
 				Assert.assertEquals(event.result, operation.result);
 			});
@@ -119,7 +119,7 @@ package com.test.services.mock
 		public function testGetExceptionOperation():void
 		{
 			var operation:GetExceptionOperation = new GetExceptionOperation(this.proxy);
-			Async.handleEvent(this, operation, GetExceptionOperationEvent.GET_EXCEPTION_OPERATION_ERROR, function(event:GetExceptionOperationEvent, ... parms) {
+			Async.handleEvent(this, operation, GetExceptionOperationEvent.GET_EXCEPTION_OPERATION_ERROR, function(event:GetExceptionOperationEvent, ... parms):void {
 				Assert.assertTrue(event.error is Exception);
 			});
 		}
@@ -128,7 +128,7 @@ package com.test.services.mock
 		public function testGetMessageOperation():void
 		{
 			var operation:GetMessageOperation = new GetMessageOperation(this.proxy);
-			Async.handleEvent(this, operation, GetMessageOperationEvent.GET_MESSAGE_OPERATION_COMPLETE, function(event:GetMessageOperationEvent, ... parms) {
+			Async.handleEvent(this, operation, GetMessageOperationEvent.GET_MESSAGE_OPERATION_COMPLETE, function(event:GetMessageOperationEvent, ... parms):void {
 				Assert.assertTrue(event.result);
 				Assert.assertEquals(operation.messages.length, 1);
 				Assert.assertEquals(operation.messages, event.messages);

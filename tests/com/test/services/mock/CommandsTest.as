@@ -83,7 +83,7 @@ package com.test.services.mock
 		public function testGetStringCommand():void
 		{
 			var cmd:GetStringCommand = new GetStringCommand('foobar', this.proxy);
-			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms) {
+			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms):void {
 				Assert.assertEquals(cmd.result, 'foobar');
 			});
 			cmd.execute();
@@ -93,7 +93,7 @@ package com.test.services.mock
 		public function testGetComplexTypeCommand():void
 		{
 			var cmd:GetComplexTypeCommand = new GetComplexTypeCommand(new ComplexType, this.proxy);
-			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms) {
+			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms):void {
 				Assert.assertTrue(cmd.result is ComplexType);
 			});
 			cmd.execute();
@@ -103,7 +103,7 @@ package com.test.services.mock
 		public function testGetSharedObjectCommand():void
 		{
 			var cmd:GetSharedObjectCommand = new GetSharedObjectCommand(this.proxy);
-			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms) {
+			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms):void {
 				Assert.assertTrue(cmd.result is SharedObject);
 			});
 			cmd.execute();
@@ -113,7 +113,7 @@ package com.test.services.mock
 		public function testGetExceptionCommand():void
 		{
 			var cmd:GetExceptionCommand = new GetExceptionCommand(this.proxy);
-			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms) {
+			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms):void {
 				Assert.assertEquals(cmd.result, 'This is a mock exception');
 			});
 			cmd.execute();
@@ -123,7 +123,7 @@ package com.test.services.mock
 		public function testGetMessagesCommand():void
 		{
 			var cmd:GetMessageCommand = new GetMessageCommand(this.proxy);
-			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms) {
+			Async.handleEvent(this, cmd, CommandEvent.COMMAND_COMPLETE, function(event:CommandEvent, ... parms):void {
 				Assert.assertEquals(cmd.result.length, 1);
 			});
 			cmd.execute();
