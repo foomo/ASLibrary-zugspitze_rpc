@@ -65,6 +65,8 @@
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/libs/mx/mx.swc</path-element>
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/libs/advancedgrids.swc</path-element>
          <path-element>/Users/franklin/Workspaces/flex4/zugspitze_core/bin/zugspitze_core.swc</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/foomo_core/bin/foomo_core.swc</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/foomo_rpc/bin/foomo_rpc.swc</path-element>
       </external-library-path>
       <fonts>
          <!-- compiler.fonts.advanced-anti-aliasing: enables advanced anti-aliasing for embedded fonts, which provides greater clarity for small fonts.-->
@@ -140,8 +142,6 @@
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/libs/authoringsupport.swc</path-element>
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/libs/flash-integration.swc</path-element>
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/locale/{locale}</path-element>
-         <path-element>/Users/franklin/Workspaces/flex4/foomo_core/bin/foomo_core.swc</path-element>
-         <path-element>/Users/franklin/Workspaces/flex4/foomo_rpc/bin/foomo_rpc.swc</path-element>
       </library-path>
       <!-- compiler.locale: specifies the locale for internationalization-->
       <locale>
