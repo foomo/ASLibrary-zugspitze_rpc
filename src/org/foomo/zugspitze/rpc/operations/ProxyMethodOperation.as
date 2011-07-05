@@ -14,16 +14,16 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * the foomo Opensource Framework. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.foomo.zugspitze.services.proxy.operations
+package org.foomo.zugspitze.rpc.operations
 {
 
 	import flash.events.Event;
 
 	import org.foomo.core.IUnload;
 	import org.foomo.zugspitze.operations.Operation;
-	import org.foomo.zugspitze.services.proxy.Proxy;
-	import org.foomo.zugspitze.services.proxy.calls.ProxyMethodCall;
-	import org.foomo.zugspitze.services.proxy.events.ProxyMethodCallEvent;
+	import org.foomo.zugspitze.rpc.Proxy;
+	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 
 	[ExcludeClass]
 

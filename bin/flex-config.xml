@@ -140,8 +140,8 @@
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/libs/authoringsupport.swc</path-element>
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/libs/flash-integration.swc</path-element>
          <path-element>/Applications/Adobe Flash Builder 4.5/sdks/4.5.1/frameworks/locale/{locale}</path-element>
-         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesRpc/bin/zugspitze_servicesRpc.swc</path-element>
          <path-element>/Users/franklin/Workspaces/flex4/foomo_core/bin/foomo_core.swc</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/foomo_rpc/bin/foomo_rpc.swc</path-element>
       </library-path>
       <!-- compiler.locale: specifies the locale for internationalization-->
       <locale>
@@ -217,8 +217,8 @@
       <show-unused-type-selector-warnings>true</show-unused-type-selector-warnings>
       <!-- compiler.source-path: list of path elements that form the roots of ActionScript class hierarchies-->
       <source-path>
-         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesProxy/src</path-element>
-         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_servicesProxy/src</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_rpc/src</path-element>
+         <path-element>/Users/franklin/Workspaces/flex4/zugspitze_rpc/src</path-element>
       </source-path>
       <!-- compiler.strict: runs the AS3 compiler in strict error checking mode.-->
       <strict>true</strict>

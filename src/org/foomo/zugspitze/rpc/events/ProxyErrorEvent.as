@@ -14,40 +14,42 @@
  * You should have received a copy of the GNU Lesser General Public License along with
  * the foomo Opensource Framework. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.foomo.zugspitze.services.proxy.events
+package org.foomo.zugspitze.rpc.events
 {
+	import flash.events.ErrorEvent;
 	import flash.events.Event;
 
-	import org.foomo.utils.ClassUtil;
-	import org.foomo.zugspitze.events.OperationEvent;
-
-	[ExcludeClass]
+	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
 
 	/**
-	 * @link www.foomo.org
+	 * @link    http://www.foomo.org
 	 * @license http://www.gnu.org/licenses/lgpl.txt
-	 * @author franklin <franklin@weareinteractive.com>
-	 * @inherit
+	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class ProxyMethodOperationEvent extends OperationEvent
+	public class ProxyErrorEvent extends ErrorEvent
 	{
+		//-----------------------------------------------------------------------------------------
+		// ~ Constants
+		//-----------------------------------------------------------------------------------------
+
+		public static const COMMUNICATION_ERROR:String 	= "communicationError";
+		public static const SECURITY_ERROR:String 		= "securityError";
+		public static const IO_ERROR:String 			= "ioError";
+
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------
 
-		/**
-		 *
-		 */
-		private var _messages:Array;
+		private var _methodCall:ProxyMethodCall;
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function ProxyMethodOperationEvent(type:String, result:*=null, error:*=null, messages:Array=null, total:Number=0, progress:Number=0)
+		public function ProxyErrorEvent(type:String, methodCall:ProxyMethodCall, text:String="", id:int=0)
 		{
-			this._messages = messages;
-			super(type, result, error, total, progress);
+			this._methodCall = methodCall;
+			super(type, false, false, text, id);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -55,11 +57,11 @@ package org.foomo.zugspitze.services.proxy.events
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 *
+		 * The causing method call
 		 */
-		public function get messages():Array
+		public function get transport():ProxyMethodCall
 		{
-			return this._messages;
+			return _methodCall;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -71,17 +73,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		override public function clone():Event
 		{
-			var eventClass:Class = ClassUtil.getClass(this);
-			return new eventClass(this.type, this.untypedResult, this.untypedError, this.messages, this.total, this.progress);
-		}
-
-		/**
-		 * @inherit
-		 */
-		override public function cloneWithType(type:String):OperationEvent
-		{
-			var eventClass:Class = ClassUtil.getClass(this);
-			return new eventClass(type, this.untypedResult, this.untypedError, this.messages, this.total, this.progress);
+			return new ProxyErrorEvent(type, transport);
 		}
 
 		/**
@@ -89,7 +81,7 @@ package org.foomo.zugspitze.services.proxy.events
 		 */
 		override public function toString():String
 		{
-			return formatToString(ClassUtil.getClassName(this), 'result', 'error', 'messages', 'total', 'progress');
+			return formatToString("RPCClientErrorEvent", "methodCall", "text", "id");
 		}
 	}
 }
