@@ -21,6 +21,7 @@ package org.foomo.zugspitze.rpc.operations
 
 	import org.foomo.core.IUnload;
 	import org.foomo.zugspitze.operations.Operation;
+	import org.foomo.zugspitze.operations.ProgressOperation;
 	import org.foomo.zugspitze.rpc.Proxy;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
 	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
@@ -32,7 +33,7 @@ package org.foomo.zugspitze.rpc.operations
 	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author franklin <franklin@weareinteractive.com>
 	 */
-	public class ProxyMethodOperation extends Operation implements IUnload
+	public class ProxyMethodOperation extends ProgressOperation implements IUnload
 	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
@@ -63,31 +64,21 @@ package org.foomo.zugspitze.rpc.operations
 		// ~ Constructor
 		//-----------------------------------------------------------------------------------------
 
-		public function ProxyMethodOperation(proxy:Proxy, methodName:String, arguments:Array, eventClass:Class)
+		public function ProxyMethodOperation(proxy:Proxy, methodName:String, arguments:Array)
 		{
 			this._proxy = proxy;
 			this._arguments = arguments;
 			this._methodName = methodName;
 			var method:Function = this._proxy[this._methodName];
 			this._methodCall = method.apply(this, this._arguments);
-			this._methodCall.addEventListener(this._methodName + 'CallComplete', this.methodCall_proxyMethodCallCompleteHandler);
-			this._methodCall.addEventListener(this._methodName + 'CallProgress', this.methodCall_proxyMethodCallProgressHandler);
-			this._methodCall.addEventListener(this._methodName + 'CallError', this.methodCall_proxyMethodCallErrorHandler);
-
-			super(eventClass);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 		}
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Public methods
 		//-----------------------------------------------------------------------------------------
-
-		/**
-		 * String | Exception
-		 */
-		public function get error():*
-		{
-			return this.untypedError;
-		}
 
 		/**
 		 *
@@ -102,9 +93,9 @@ package org.foomo.zugspitze.rpc.operations
 		 */
 		public function unload():void
 		{
-			this._methodCall.removeEventListener(this._methodName + 'CallComplete', this.methodCall_proxyMethodCallCompleteHandler);
-			this._methodCall.removeEventListener(this._methodName + 'CallProgress', this.methodCall_proxyMethodCallProgressHandler);
-			this._methodCall.removeEventListener(this._methodName + 'CallError', this.methodCall_proxyMethodCallErrorHandler);
+			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
+			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
+			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 			this._arguments = null;
 			this._methodName = null;
 			this._methodCall = null;
@@ -120,64 +111,25 @@ package org.foomo.zugspitze.rpc.operations
 		 */
 		protected function methodCall_proxyMethodCallProgressHandler(event:ProxyMethodCallEvent):void
 		{
-			this.dispatchOperationProgressEvent(event.bytesTotal, event.bytesLoaded);
+			this.dispatchOperationProgressEvent(event.methodCall.bytesTotal, event.methodCall.bytesLoaded);
 		}
 
 		/**
 		 *
 		 */
-		protected function methodCall_proxyMethodCallErrorHandler(event:ProxyMethodCallEvent):void
+		protected function methodCall_proxyMethodCallResultHandler(event:ProxyMethodCallEvent):void
 		{
-			this.dispatchOperationErrorEvent(event.error);
+			this._messages = event.methodCall.messages;
+			this.dispatchOperationCompleteEvent(event.methodCall.methodReply.value);
 		}
 
 		/**
 		 *
 		 */
-		protected function methodCall_proxyMethodCallCompleteHandler(event:ProxyMethodCallEvent):void
+		protected function methodCall_proxyMethodCallExceptionHandler(event:ProxyMethodCallEvent):void
 		{
-			this._messages = event.messages;
-			this.dispatchOperationCompleteEvent(event.untypedResult);
-		}
-
-		/**
-		 *
-		 */
-		protected function methodCall_proxyMethodCallExceptionHandler(event:Event):void
-		{
-			this.dispatchOperationErrorEvent(this._methodCall.methodReply.exception);
-		}
-
-		//-----------------------------------------------------------------------------------------
-		// ~ Overriden methods
-		//-----------------------------------------------------------------------------------------
-
-		/**
-		 *
-		 */
-		override protected function dispatchOperationProgressEvent(total:Number, progress:Number):Boolean
-		{
-			this._total = total;
-			this._progress = progress;
-			return this.dispatchEvent(new this._eventClass(this.eventClassToEventName() + 'Progress', this.untypedResult, this.untypedError, this.messages, this.total, this.progress));
-		}
-
-		/**
-		 *
-		 */
-		override protected function dispatchOperationCompleteEvent(result:*=null):Boolean
-		{
-			if (result != null) this._result = result;
-			return this.dispatchEvent(new this._eventClass(this.eventClassToEventName() + 'Complete', this.untypedResult, this.untypedError, this.messages, this.total, this.progress));
-		}
-
-		/**
-		 *
-		 */
-		override protected function dispatchOperationErrorEvent(error:*=null):Boolean
-		{
-			if (error != null) this._error = error;
-			return this.dispatchEvent(new this._eventClass(this.eventClassToEventName() + 'Error', this.untypedResult, this.untypedError, this.messages, this.total, this.progress));
+			this._messages = event.methodCall.messages;
+			this.dispatchOperationErrorEvent(event.methodCall.methodReply.exception);
 		}
 	}
 }

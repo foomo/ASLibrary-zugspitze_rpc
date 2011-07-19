@@ -28,9 +28,13 @@ package org.foomo.zugspitze.rpc.calls
 	import org.foomo.rpc.events.RPCMethodCallEvent;
 	import org.foomo.rpc.events.RPCTransportErrorEvent;
 	import org.foomo.rpc.protocol.reply.MethodReply;
+	import org.foomo.zugspitze.rpc.events.ProxyErrorEvent;
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 	import org.foomo.zugspitze.zugspitze_internal;
 
-	[ExcludeClass]
+	[Event(name="proxyMethodCallResult", type="org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent")]
+	[Event(name="proxyMethodCallProgress", type="org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent")]
+	[Event(name="proxyMethodCallException", type="org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent")]
 
 	/**
 	 * This is a base class and should not be used independently.
@@ -54,10 +58,6 @@ package org.foomo.zugspitze.rpc.calls
 		 * Method arguments
 		 */
 		protected var _arguments:Array;
-		/**
-		 * Class instance to dispatch
-		 */
-		protected var _eventClass:Class
 		/**
 		 * RPC Token object on sent
 		 */
@@ -92,11 +92,10 @@ package org.foomo.zugspitze.rpc.calls
 		 * @param arguments	Method arguments
 		 * @param eventClass Event class extending ProxyMethodCallEvent
 		 */
-		public function ProxyMethodCall(methodName:String, arguments:Array, eventClass:Class)
+		public function ProxyMethodCall(methodName:String, arguments:Array)
 		{
 			this._arguments = arguments;
 			this._methodName = methodName;
-			this._eventClass = eventClass;
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -181,10 +180,6 @@ package org.foomo.zugspitze.rpc.calls
 				this._token = null;
 			}
 			if (this._transport) {
-				this._transport.removeEventListener(IOErrorEvent.IO_ERROR, this.transport_errorHandler);
-				this._transport.removeEventListener(RPCTransportErrorEvent.NULL_ERROR, this.transport_errorHandler);
-				this._transport.removeEventListener(RPCTransportErrorEvent.REPLY_ERROR, this.transport_errorHandler);
-				this._transport.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, this.transport_errorHandler);
 				this._transport.removeEventListener(ProgressEvent.PROGRESS, this.transport_progressHandler);
 				this._transport = null;
 			}
@@ -209,10 +204,6 @@ package org.foomo.zugspitze.rpc.calls
 		zugspitze_internal function set transport(value:RPCTransport):void
 		{
 			this._transport = value;
-			this._transport.addEventListener(IOErrorEvent.IO_ERROR, this.transport_errorHandler);
-			this._transport.addEventListener(RPCTransportErrorEvent.NULL_ERROR, this.transport_errorHandler);
-			this._transport.addEventListener(RPCTransportErrorEvent.REPLY_ERROR, this.transport_errorHandler);
-			this._transport.addEventListener(SecurityErrorEvent.SECURITY_ERROR, this.transport_errorHandler);
 			this._transport.addEventListener(ProgressEvent.PROGRESS, this.transport_progressHandler);
 		}
 
@@ -229,18 +220,7 @@ package org.foomo.zugspitze.rpc.calls
 		{
 			this._bytesLoaded = event.bytesLoaded;
 			this._bytesTotal = event.bytesTotal;
-			this.dispatchEvent(new this._eventClass(this._methodName + 'CallProgress', null, '', null, null, this._bytesTotal, this._bytesLoaded));
-		}
-
-		/**
-		 * Handling transport errors like SecurityError, IOError ...
-		 *
-		 * @private
-		 */
-		protected function transport_errorHandler(event:Event):void
-		{
-			this._error = event['text'];
-			this.dispatchEvent(new this._eventClass(this._methodName + 'CallError', null, this._error, null, null, this._bytesTotal, this._bytesLoaded));
+			this.dispatchEvent(new ProxyMethodCallEvent(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this));
 		}
 
 		/**
@@ -251,7 +231,11 @@ package org.foomo.zugspitze.rpc.calls
 		protected function token_methodCallTokenCompleteHandler(event:RPCMethodCallEvent):void
 		{
 			this._methodReply = event.methodReply;
-			this.dispatchEvent(new this._eventClass(this._methodName + 'CallComplete', this._methodReply.value, '', this._methodReply.exception, this._methodReply.messages, this._bytesTotal, this._bytesLoaded));
+			if (this.methodReply.exception != null) {
+				this.dispatchEvent(new ProxyMethodCallEvent(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this));
+			} else {
+				this.dispatchEvent(new ProxyMethodCallEvent(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this));
+			}
 		}
 	}
 }
