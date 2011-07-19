@@ -105,7 +105,7 @@ package org.foomo.zugspitze.rpc
 			var completeHandler:Function;
 
 			unload = function():void {
-				transport.removeEventListener(RPCTransportErrorEvent.NULL_ERROR, errorHandler);
+				transport.removeEventListener(RPCTransportErrorEvent.REPLY_ERROR, errorHandler);
 				transport.removeEventListener(RPCTransportErrorEvent.NULL_ERROR, errorHandler);
 				transport.removeEventListener(SecurityErrorEvent.SECURITY_ERROR, errorHandler);
 				transport.removeEventListener(IOErrorEvent.IO_ERROR, errorHandler);
@@ -131,8 +131,8 @@ package org.foomo.zugspitze.rpc
 				unload.call(proxy);
 			}
 
-			transport.addEventListener(RPCTransportErrorEvent.NULL_ERROR, errorHandler);
 			transport.addEventListener(RPCTransportErrorEvent.REPLY_ERROR, errorHandler);
+			transport.addEventListener(RPCTransportErrorEvent.NULL_ERROR, errorHandler);
 			transport.addEventListener(SecurityErrorEvent.SECURITY_ERROR, errorHandler);
 			transport.addEventListener(IOErrorEvent.IO_ERROR, errorHandler);
 			transport.addEventListener(Event.COMPLETE, completeHandler);

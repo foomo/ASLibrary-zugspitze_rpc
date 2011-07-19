@@ -16,13 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetArrayCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-	
-
-	[Event(name="getArrayCallComplete", type="com.test.services.mock.events.GetArrayCallEvent")]
-	[Event(name="getArrayCallProgress", type="com.test.services.mock.events.GetArrayCallEvent")]
-	[Event(name="getArrayCallError", type="com.test.services.mock.events.GetArrayCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -43,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetArrayCall(value:Array)
 		{
-			super(METHOD_NAME, [value], GetArrayCallEvent);
+			super(METHOD_NAME, [value]);
 		}
 
 		//-----------------------------------------------------------------------------------------

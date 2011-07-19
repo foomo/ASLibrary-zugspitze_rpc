@@ -16,13 +16,9 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetSharedObjectCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
 	import com.test.services.mock.vos.SharedObject;
-
-	[Event(name="getSharedObjectCallComplete", type="com.test.services.mock.events.GetSharedObjectCallEvent")]
-	[Event(name="getSharedObjectCallProgress", type="com.test.services.mock.events.GetSharedObjectCallEvent")]
-	[Event(name="getSharedObjectCallError", type="com.test.services.mock.events.GetSharedObjectCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -43,7 +39,7 @@ package com.test.services.mock.calls
 
 		public function GetSharedObjectCall()
 		{
-			super(METHOD_NAME, [], GetSharedObjectCallEvent);
+			super(METHOD_NAME, []);
 		}
 
 		//-----------------------------------------------------------------------------------------

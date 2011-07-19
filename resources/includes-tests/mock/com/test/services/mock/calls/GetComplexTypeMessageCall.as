@@ -16,12 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetComplexTypeMessageCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-
-	[Event(name="getComplexTypeMessageCallComplete", type="com.test.services.mock.events.GetComplexTypeMessageCallEvent")]
-	[Event(name="getComplexTypeMessageCallProgress", type="com.test.services.mock.events.GetComplexTypeMessageCallEvent")]
-	[Event(name="getComplexTypeMessageCallError", type="com.test.services.mock.events.GetComplexTypeMessageCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -42,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetComplexTypeMessageCall()
 		{
-			super(METHOD_NAME, [], GetComplexTypeMessageCallEvent);
+			super(METHOD_NAME, []);
 		}
 
 		//-----------------------------------------------------------------------------------------

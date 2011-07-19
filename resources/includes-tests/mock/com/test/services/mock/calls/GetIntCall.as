@@ -16,12 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetIntCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-
-	[Event(name="getIntCallComplete", type="com.test.services.mock.events.GetIntCallEvent")]
-	[Event(name="getIntCallProgress", type="com.test.services.mock.events.GetIntCallEvent")]
-	[Event(name="getIntCallError", type="com.test.services.mock.events.GetIntCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -42,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetIntCall(value:int)
 		{
-			super(METHOD_NAME, [value], GetIntCallEvent);
+			super(METHOD_NAME, [value]);
 		}
 
 		//-----------------------------------------------------------------------------------------

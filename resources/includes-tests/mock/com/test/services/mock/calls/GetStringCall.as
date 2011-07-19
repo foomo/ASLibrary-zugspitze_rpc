@@ -16,12 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetStringCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-
-	[Event(name="getStringCallComplete", type="com.test.services.mock.events.GetStringCallEvent")]
-	[Event(name="getStringCallProgress", type="com.test.services.mock.events.GetStringCallEvent")]
-	[Event(name="getStringCallError", type="com.test.services.mock.events.GetStringCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -42,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetStringCall(value:String)
 		{
-			super(METHOD_NAME, [value], GetStringCallEvent);
+			super(METHOD_NAME, [value]);
 		}
 
 		//-----------------------------------------------------------------------------------------

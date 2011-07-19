@@ -18,10 +18,10 @@ package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.calls.GetComplexTypeMessageCall;
-	import com.test.services.mock.events.GetComplexTypeMessageCallEvent;
 
 	import org.foomo.zugspitze.commands.Command;
 	import org.foomo.zugspitze.commands.ICommand;
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 	import org.foomo.core.IUnload;
 
 	/**
@@ -70,9 +70,9 @@ package com.test.services.mock.commands
 		public function execute():void
 		{
 			this._methodCall = this.proxy.getComplexTypeMessage();
-			this._methodCall.addEventListener(GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_ERROR, this.abstractErrorHandler);
-			this._methodCall.addEventListener(GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_PROGRESS, this.abstractProgressHandler);
-			this._methodCall.addEventListener(GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_COMPLETE, this.abstractCompleteHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 		}
 
 		/**
@@ -82,9 +82,9 @@ package com.test.services.mock.commands
 		{
 			this.proxy = null;
 			if (this._methodCall) {
-				this._methodCall.removeEventListener(GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_ERROR, this.abstractErrorHandler);
-				this._methodCall.removeEventListener(GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_PROGRESS, this.abstractProgressHandler);
-				this._methodCall.removeEventListener(GetComplexTypeMessageCallEvent.GET_COMPLEX_TYPE_MESSAGE_CALL_COMPLETE, this.abstractCompleteHandler);
+				this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
+				this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
+				this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 				this._methodCall = null;
 			}
 		}
@@ -94,24 +94,24 @@ package com.test.services.mock.commands
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 * Handle method call progress
-		 *
-		 * @param event Method call event
-		 */
-		protected function abstractProgressHandler(event:GetComplexTypeMessageCallEvent):void
-		{
-			// Overwrite this method in your implementation class
-		}
-
-		/**
 		 * Handle method call result
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractCompleteHandler(event:GetComplexTypeMessageCallEvent):void
+		protected function methodCall_proxyMethodCallResultHandler(event:ProxyMethodCallEvent):void
 		{
 			// Overwrite this method in your implementation class
 			this.dispatchCommandCompleteEvent();
+		}
+
+		/**
+		 * Handle method call progress
+		 *
+		 * @param event Method call event
+		 */
+		protected function methodCall_proxyMethodCallProgressHandler(event:ProxyMethodCallEvent):void
+		{
+			// Overwrite this method in your implementation class
 		}
 
 		/**
@@ -119,10 +119,10 @@ package com.test.services.mock.commands
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractErrorHandler(event:GetComplexTypeMessageCallEvent):void
+		protected function methodCall_proxyMethodCallExceptionHandler(event:ProxyMethodCallEvent):void
 		{
 			// Overwrite this method in your implementation class
-			this.dispatchCommandErrorEvent(event.error);
+			this.dispatchCommandErrorEvent();
 		}
 	}
 }

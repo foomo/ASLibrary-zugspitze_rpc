@@ -17,13 +17,8 @@
 package com.test.services.mock.operations
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetComplexTypeMessageOperationEvent;
 
 	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
-
-	[Event(name="GetComplexTypeMessageOperationComplete", type="com.test.services.mock.events.GetComplexTypeMessageOperationEvent")]
-	[Event(name="GetComplexTypeMessageOperationProgress", type="com.test.services.mock.events.GetComplexTypeMessageOperationEvent")]
-	[Event(name="GetComplexTypeMessageOperationError", type="com.test.services.mock.events.GetComplexTypeMessageOperationEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -41,19 +36,7 @@ package com.test.services.mock.operations
 		 */
 		public function GetComplexTypeMessageOperation(proxy:MockProxy)
 		{
-			super(proxy, 'getComplexTypeMessage', [], GetComplexTypeMessageOperationEvent);
-		}
-
-		//-----------------------------------------------------------------------------------------
-		// ~ Public methods
-		//-----------------------------------------------------------------------------------------
-
-		/**
-		 *
-		 */
-		public function get result():Boolean
-		{
-			return this.untypedResult;
+			super(proxy, 'getComplexTypeMessage', []);
 		}
 	}
 }

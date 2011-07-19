@@ -17,7 +17,9 @@
 package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.ExceptionEvent;
+
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
+	import org.foomo.zugspitze.services.namespaces.php.foomo.services.types.Exception;
 
 	/**
 	 * @link    http://www.foomo.org
@@ -45,9 +47,9 @@ package com.test.services.mock.commands
 		// ~ Overriden methods
 		//-----------------------------------------------------------------------------------------
 
-		override protected function abstractExceptionHandler(event:ExceptionEvent):void
+		override protected function methodCall_proxyMethodCallExceptionHandler(event:ProxyMethodCallEvent):void
 		{
-			this.result = event.message;
+			this.result = Exception(event.methodCall.exception).message;
 			this.dispatchCommandCompleteEvent();
 		}
 	}

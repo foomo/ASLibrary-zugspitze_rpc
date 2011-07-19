@@ -16,12 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetObjectCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-
-	[Event(name="getObjectCallComplete", type="com.test.services.mock.events.GetObjectCallEvent")]
-	[Event(name="getObjectCallProgress", type="com.test.services.mock.events.GetObjectCallEvent")]
-	[Event(name="getObjectCallError", type="com.test.services.mock.events.GetObjectCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -42,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetObjectCall(value:Object)
 		{
-			super(METHOD_NAME, [value], GetObjectCallEvent);
+			super(METHOD_NAME, [value]);
 		}
 
 		//-----------------------------------------------------------------------------------------

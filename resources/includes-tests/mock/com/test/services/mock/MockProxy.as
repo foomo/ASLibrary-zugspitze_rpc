@@ -59,7 +59,11 @@ package com.test.services.mock
 		/**
 		 *
 		 */
-		public static var defaultEndPoint:String = 'http://foomo.radact.interact.com/foomo/index.php/Foomo/showMVCApp/Foomo.Zugspitze.ProxyGenerator/serve';
+		private static var _instance:MockProxy;
+		/**
+		 *
+		 */
+		public static var defaultEndPoint:String = "http://foomo.radact.interact.com/foomo/modules/Foomo.Zugspitze/services/mock.php/Foomo.Services.RPC/serve";
 
 		//-----------------------------------------------------------------------------------------
 		// ~ Constructor
@@ -67,7 +71,8 @@ package com.test.services.mock
 
 		public function MockProxy(endPoint:String=null)
 		{
-			super((endPoint != null) ? endPoint : defaultEndPoint, CLASS_NAME, VERSION);
+			if (endPoint == null) endPoint = defaultEndPoint;
+			super(endPoint, CLASS_NAME, VERSION);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -184,6 +189,18 @@ package com.test.services.mock
 		public function getComplexTypeMessage():GetComplexTypeMessageCall
 		{
 			return zugspitze_internal::sendMethodCall(new GetComplexTypeMessageCall());
+		}
+
+		//-----------------------------------------------------------------------------------------
+		// ~ Public static methods
+		//-----------------------------------------------------------------------------------------
+
+		/**
+		 *
+		 */
+		public static function get defaultInstance():MockProxy		{
+			if (!_instance) _instance = new MockProxy(defaultEndPoint);
+			return _instance;
 		}
 	}
 }

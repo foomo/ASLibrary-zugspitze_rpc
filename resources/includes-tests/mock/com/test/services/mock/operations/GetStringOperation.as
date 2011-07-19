@@ -17,13 +17,8 @@
 package com.test.services.mock.operations
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetStringOperationEvent;
-
+	
 	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
-
-	[Event(name="GetStringOperationComplete", type="com.test.services.mock.events.GetStringOperationEvent")]
-	[Event(name="GetStringOperationProgress", type="com.test.services.mock.events.GetStringOperationEvent")]
-	[Event(name="GetStringOperationError", type="com.test.services.mock.events.GetStringOperationEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -41,19 +36,7 @@ package com.test.services.mock.operations
 		 */
 		public function GetStringOperation(value:String, proxy:MockProxy)
 		{
-			super(proxy, 'getString', [value], GetStringOperationEvent);
-		}
-
-		//-----------------------------------------------------------------------------------------
-		// ~ Public methods
-		//-----------------------------------------------------------------------------------------
-
-		/**
-		 *
-		 */
-		public function get result():String
-		{
-			return this.untypedResult;
+			super(proxy, 'getString', [value]);
 		}
 	}
 }

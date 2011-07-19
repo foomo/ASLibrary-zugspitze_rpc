@@ -16,6 +16,7 @@
  */
 package com.test.services.mock.vos
 {
+	
 	[Bindable]
 	[RemoteClass(alias='Foomo.Zugspitze.Services.Mock.SharedObject')]
 
@@ -24,8 +25,7 @@ package com.test.services.mock.vos
 	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class SharedObject
-	{
+	public class SharedObject	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------

@@ -16,6 +16,7 @@
  */
 package org.foomo.zugspitze.services.namespaces.php.foomo.services.types
 {
+			
 	[Bindable]
 	[RemoteClass(alias='Foomo.Services.Types.Exception')]
 
@@ -24,8 +25,7 @@ package org.foomo.zugspitze.services.namespaces.php.foomo.services.types
 	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class Exception
-	{
+	public class Exception	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------

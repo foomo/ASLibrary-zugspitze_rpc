@@ -17,8 +17,9 @@
 package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetComplexTypeCallEvent;
+	import com.test.services.mock.calls.GetComplexTypeCall;
 
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 
 	/**
@@ -47,9 +48,9 @@ package com.test.services.mock.commands
 		// ~ Overriden methods
 		//-----------------------------------------------------------------------------------------
 
-		override protected function abstractCompleteHandler(event:GetComplexTypeCallEvent):void
+		override protected function methodCall_proxyMethodCallResultHandler(event:ProxyMethodCallEvent):void
 		{
-			this.result = event.result;
+			this.result = GetComplexTypeCall(event.methodCall).result;
 			this.dispatchCommandCompleteEvent();
 		}
 	}

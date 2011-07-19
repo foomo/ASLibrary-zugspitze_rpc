@@ -16,12 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetNumberCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-
-	[Event(name="getNumberCallComplete", type="com.test.services.mock.events.GetNumberCallEvent")]
-	[Event(name="getNumberCallProgress", type="com.test.services.mock.events.GetNumberCallEvent")]
-	[Event(name="getNumberCallError", type="com.test.services.mock.events.GetNumberCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -42,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetNumberCall(value:Number)
 		{
-			super(METHOD_NAME, [value], GetNumberCallEvent);
+			super(METHOD_NAME, [value]);
 		}
 
 		//-----------------------------------------------------------------------------------------

@@ -16,6 +16,7 @@
  */
 package org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock
 {
+	
 	[Bindable]
 	[RemoteClass(alias='Foomo.Zugspitze.Services.Mock.CustomException')]
 
@@ -24,8 +25,7 @@ package org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.moc
 	 * @license http://www.gnu.org/licenses/lgpl.txt
 	 * @author  franklin <franklin@weareinteractive.com>
 	 */
-	public class CustomException
-	{
+	public class CustomException	{
 		//-----------------------------------------------------------------------------------------
 		// ~ Variables
 		//-----------------------------------------------------------------------------------------

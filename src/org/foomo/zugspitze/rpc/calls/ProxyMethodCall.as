@@ -155,7 +155,7 @@ package org.foomo.zugspitze.rpc.calls
 		 */
 		public function get messages():Array
 		{
-			return (this._methodReply) ? this._methodReply.messages : [];
+			return (this._methodReply) ? this._methodReply.messages : null;
 		}
 
 		/**

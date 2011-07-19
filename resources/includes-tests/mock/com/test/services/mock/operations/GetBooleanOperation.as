@@ -17,13 +17,8 @@
 package com.test.services.mock.operations
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetBooleanOperationEvent;
-
+	
 	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
-
-	[Event(name="GetBooleanOperationComplete", type="com.test.services.mock.events.GetBooleanOperationEvent")]
-	[Event(name="GetBooleanOperationProgress", type="com.test.services.mock.events.GetBooleanOperationEvent")]
-	[Event(name="GetBooleanOperationError", type="com.test.services.mock.events.GetBooleanOperationEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -41,19 +36,7 @@ package com.test.services.mock.operations
 		 */
 		public function GetBooleanOperation(value:Boolean, proxy:MockProxy)
 		{
-			super(proxy, 'getBoolean', [value], GetBooleanOperationEvent);
-		}
-
-		//-----------------------------------------------------------------------------------------
-		// ~ Public methods
-		//-----------------------------------------------------------------------------------------
-
-		/**
-		 *
-		 */
-		public function get result():Boolean
-		{
-			return this.untypedResult;
+			super(proxy, 'getBoolean', [value]);
 		}
 	}
 }

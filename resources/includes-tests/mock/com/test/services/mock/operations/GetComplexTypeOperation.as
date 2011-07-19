@@ -16,16 +16,9 @@
  */
 package com.test.services.mock.operations
 {
-	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
-
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetComplexTypeOperationEvent;
-
+	import org.foomo.zugspitze.services.namespaces.php.foomo.zugspitze.services.mock.ComplexType;
 	import org.foomo.zugspitze.rpc.operations.ProxyMethodOperation;
-
-	[Event(name="GetComplexTypeOperationComplete", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
-	[Event(name="GetComplexTypeOperationProgress", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
-	[Event(name="GetComplexTypeOperationError", type="com.test.services.mock.events.GetComplexTypeOperationEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -43,19 +36,7 @@ package com.test.services.mock.operations
 		 */
 		public function GetComplexTypeOperation(value:ComplexType, proxy:MockProxy)
 		{
-			super(proxy, 'getComplexType', [value], GetComplexTypeOperationEvent);
-		}
-
-		//-----------------------------------------------------------------------------------------
-		// ~ Public methods
-		//-----------------------------------------------------------------------------------------
-
-		/**
-		 *
-		 */
-		public function get result():ComplexType
-		{
-			return this.untypedResult;
+			super(proxy, 'getComplexType', [value]);
 		}
 	}
 }

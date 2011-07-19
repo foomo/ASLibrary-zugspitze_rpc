@@ -17,7 +17,9 @@
 package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
-	import com.test.services.mock.events.GetMessageCallEvent;
+	import com.test.services.mock.calls.GetMessageCall;
+
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 
 	/**
 	 * @link    http://www.foomo.org
@@ -45,9 +47,9 @@ package com.test.services.mock.commands
 		// ~ Overriden methods
 		//-----------------------------------------------------------------------------------------
 
-		override protected function abstractCompleteHandler(event:GetMessageCallEvent):void
+		override protected function methodCall_proxyMethodCallResultHandler(event:ProxyMethodCallEvent):void
 		{
-			this.result = event.messages;
+			this.result = GetMessageCall(event.methodCall).messages;
 			this.dispatchCommandCompleteEvent();
 		}
 	}

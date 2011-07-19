@@ -18,12 +18,10 @@ package com.test.services.mock.commands
 {
 	import com.test.services.mock.MockProxy;
 	import com.test.services.mock.calls.GetCustomExceptionCall;
-	import com.test.services.mock.events.GetCustomExceptionCallEvent;
-	import com.test.services.mock.events.CustomExceptionEvent;
-	import com.test.services.mock.events.ExceptionEvent;
 
 	import org.foomo.zugspitze.commands.Command;
 	import org.foomo.zugspitze.commands.ICommand;
+	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 	import org.foomo.core.IUnload;
 
 	/**
@@ -72,11 +70,9 @@ package com.test.services.mock.commands
 		public function execute():void
 		{
 			this._methodCall = this.proxy.getCustomException();
-			this._methodCall.addEventListener(GetCustomExceptionCallEvent.GET_CUSTOM_EXCEPTION_CALL_ERROR, this.abstractErrorHandler);
-			this._methodCall.addEventListener(GetCustomExceptionCallEvent.GET_CUSTOM_EXCEPTION_CALL_PROGRESS, this.abstractProgressHandler);
-			this._methodCall.addEventListener(GetCustomExceptionCallEvent.GET_CUSTOM_EXCEPTION_CALL_COMPLETE, this.abstractCompleteHandler);
-			this._methodCall.addEventListener(CustomExceptionEvent.CUSTOM_EXCEPTION, this.abstractCustomExceptionHandler);
-			this._methodCall.addEventListener(ExceptionEvent.EXCEPTION, this.abstractExceptionHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
+			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 		}
 
 		/**
@@ -86,11 +82,9 @@ package com.test.services.mock.commands
 		{
 			this.proxy = null;
 			if (this._methodCall) {
-				this._methodCall.removeEventListener(GetCustomExceptionCallEvent.GET_CUSTOM_EXCEPTION_CALL_ERROR, this.abstractErrorHandler);
-				this._methodCall.removeEventListener(GetCustomExceptionCallEvent.GET_CUSTOM_EXCEPTION_CALL_PROGRESS, this.abstractProgressHandler);
-				this._methodCall.removeEventListener(GetCustomExceptionCallEvent.GET_CUSTOM_EXCEPTION_CALL_COMPLETE, this.abstractCompleteHandler);
-				this._methodCall.removeEventListener(CustomExceptionEvent.CUSTOM_EXCEPTION, this.abstractCustomExceptionHandler);
-				this._methodCall.removeEventListener(ExceptionEvent.EXCEPTION, this.abstractExceptionHandler);
+				this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
+				this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
+				this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 				this._methodCall = null;
 			}
 		}
@@ -100,24 +94,24 @@ package com.test.services.mock.commands
 		//-----------------------------------------------------------------------------------------
 
 		/**
-		 * Handle method call progress
-		 *
-		 * @param event Method call event
-		 */
-		protected function abstractProgressHandler(event:GetCustomExceptionCallEvent):void
-		{
-			// Overwrite this method in your implementation class
-		}
-
-		/**
 		 * Handle method call result
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractCompleteHandler(event:GetCustomExceptionCallEvent):void
+		protected function methodCall_proxyMethodCallResultHandler(event:ProxyMethodCallEvent):void
 		{
 			// Overwrite this method in your implementation class
 			this.dispatchCommandCompleteEvent();
+		}
+
+		/**
+		 * Handle method call progress
+		 *
+		 * @param event Method call event
+		 */
+		protected function methodCall_proxyMethodCallProgressHandler(event:ProxyMethodCallEvent):void
+		{
+			// Overwrite this method in your implementation class
 		}
 
 		/**
@@ -125,30 +119,10 @@ package com.test.services.mock.commands
 		 *
 		 * @param event Method call event
 		 */
-		protected function abstractErrorHandler(event:GetCustomExceptionCallEvent):void
+		protected function methodCall_proxyMethodCallExceptionHandler(event:ProxyMethodCallEvent):void
 		{
 			// Overwrite this method in your implementation class
-			this.dispatchCommandErrorEvent(event.error);
-		}
-
-		/**
-		 * Handle exception
-		 *
-		 * @param event Exception event
-		 */
-		protected function abstractCustomExceptionHandler(event:CustomExceptionEvent):void
-		{
-			this.dispatchCommandErrorEvent(event.toString());
-		}
-
-		/**
-		 * Handle exception
-		 *
-		 * @param event Exception event
-		 */
-		protected function abstractExceptionHandler(event:ExceptionEvent):void
-		{
-			this.dispatchCommandErrorEvent(event.toString());
+			this.dispatchCommandErrorEvent();
 		}
 	}
 }

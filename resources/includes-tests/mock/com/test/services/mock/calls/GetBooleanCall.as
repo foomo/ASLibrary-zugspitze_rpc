@@ -16,12 +16,8 @@
  */
 package com.test.services.mock.calls
 {
-	import com.test.services.mock.events.GetBooleanCallEvent;
+	import org.foomo.utils.CompilerUtil;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
-
-	[Event(name="getBooleanCallComplete", type="com.test.services.mock.events.GetBooleanCallEvent")]
-	[Event(name="getBooleanCallProgress", type="com.test.services.mock.events.GetBooleanCallEvent")]
-	[Event(name="getBooleanCallError", type="com.test.services.mock.events.GetBooleanCallEvent")]
 
 	/**
 	 * @link    http://www.foomo.org
@@ -42,7 +38,7 @@ package com.test.services.mock.calls
 
 		public function GetBooleanCall(value:Boolean)
 		{
-			super(METHOD_NAME, [value], GetBooleanCallEvent);
+			super(METHOD_NAME, [value]);
 		}
 
 		//-----------------------------------------------------------------------------------------
