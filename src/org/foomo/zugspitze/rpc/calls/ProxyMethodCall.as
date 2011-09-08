@@ -22,7 +22,7 @@ package org.foomo.zugspitze.rpc.calls
 	import flash.events.ProgressEvent;
 	import flash.events.SecurityErrorEvent;
 
-	import org.foomo.core.IUnload;
+	import org.foomo.memory.IUnload;
 	import org.foomo.rpc.RPCMethodCallToken;
 	import org.foomo.rpc.RPCTransport;
 	import org.foomo.rpc.events.RPCMethodCallEvent;

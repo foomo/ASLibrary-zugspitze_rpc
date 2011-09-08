@@ -19,7 +19,9 @@ package org.foomo.zugspitze.rpc.operations
 
 	import flash.events.Event;
 
-	import org.foomo.core.IUnload;
+	import org.foomo.managers.LogManager;
+	import org.foomo.memory.IUnload;
+	import org.foomo.utils.ClassUtil;
 	import org.foomo.zugspitze.operations.Operation;
 	import org.foomo.zugspitze.operations.ProgressOperation;
 	import org.foomo.zugspitze.rpc.Proxy;
@@ -71,6 +73,8 @@ package org.foomo.zugspitze.rpc.operations
 			this._methodName = methodName;
 			var method:Function = this._proxy[this._methodName];
 			this._methodCall = method.apply(this, this._arguments);
+			// @todo reenable when filtering is implemented
+			//if (LogManager.isDebug()) LogManager.debug(this, 'ProxyMethodOperation.ProxyMethodOperation() :: {0}({1})', this._methodName, this._arguments);
 			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
 			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
 			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
@@ -128,6 +132,8 @@ package org.foomo.zugspitze.rpc.operations
 		 */
 		protected function methodCall_proxyMethodCallExceptionHandler(event:ProxyMethodCallEvent):void
 		{
+			// @todo reenable when filtering is implemented
+			//if (LogManager.isDebug()) LogManager.debug(this, 'ProxyMethodOperation.methodCall_proxyMethodCallExceptionHandler() :: {0}', ClassUtil.getQualifiedName(event.methodCall.exception));
 			this._messages = event.methodCall.messages;
 			this.dispatchOperationErrorEvent(event.methodCall.methodReply.exception);
 		}
