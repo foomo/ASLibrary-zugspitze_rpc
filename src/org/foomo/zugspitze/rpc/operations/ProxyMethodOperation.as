@@ -26,6 +26,7 @@ package org.foomo.zugspitze.rpc.operations
 	import org.foomo.zugspitze.operations.ProgressOperation;
 	import org.foomo.zugspitze.rpc.Proxy;
 	import org.foomo.zugspitze.rpc.calls.ProxyMethodCall;
+	import org.foomo.zugspitze.rpc.events.ProxyErrorEvent;
 	import org.foomo.zugspitze.rpc.events.ProxyMethodCallEvent;
 
 	[ExcludeClass]
@@ -78,6 +79,9 @@ package org.foomo.zugspitze.rpc.operations
 			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
 			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
 			this._methodCall.addEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
+			this._proxy.addEventListener(ProxyErrorEvent.COMMUNICATION_ERROR, this.proxy_errorHandler);
+			this._proxy.addEventListener(ProxyErrorEvent.SECURITY_ERROR, this.proxy_errorHandler);
+			this._proxy.addEventListener(ProxyErrorEvent.IO_ERROR, this.proxy_errorHandler);
 		}
 
 		//-----------------------------------------------------------------------------------------
@@ -100,6 +104,9 @@ package org.foomo.zugspitze.rpc.operations
 			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
 			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
 			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
+			this._proxy.removeEventListener(ProxyErrorEvent.COMMUNICATION_ERROR, this.proxy_errorHandler);
+			this._proxy.removeEventListener(ProxyErrorEvent.SECURITY_ERROR, this.proxy_errorHandler);
+			this._proxy.removeEventListener(ProxyErrorEvent.IO_ERROR, this.proxy_errorHandler);
 			this._arguments = null;
 			this._methodName = null;
 			this._methodCall = null;
@@ -136,6 +143,16 @@ package org.foomo.zugspitze.rpc.operations
 			//if (LogManager.isDebug()) LogManager.debug(this, 'ProxyMethodOperation.methodCall_proxyMethodCallExceptionHandler() :: {0}', ClassUtil.getQualifiedName(event.methodCall.exception));
 			this._messages = event.methodCall.messages;
 			this.dispatchOperationErrorEvent(event.methodCall.methodReply.exception);
+		}
+
+		/**
+		 *
+		 */
+		protected function proxy_errorHandler(event:ProxyErrorEvent):void
+		{
+			// @todo reenable when filtering is implemented
+			//if (LogManager.isDebug()) LogManager.debug(this, 'ProxyMethodOperation.proxy_errorHandler() :: {0}', event.type);
+			this.dispatchOperationErrorEvent(event);
 		}
 	}
 }
