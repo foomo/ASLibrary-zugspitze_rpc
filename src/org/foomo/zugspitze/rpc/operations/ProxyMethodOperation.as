@@ -96,20 +96,25 @@ package org.foomo.zugspitze.rpc.operations
 			return this._messages;
 		}
 
+		//-----------------------------------------------------------------------------------------
+		// ~ Overriden methods
+		//-----------------------------------------------------------------------------------------
+
 		/**
 		 *
 		 */
-		public function unload():void
+		override public function unload():void
 		{
+			super.unload();
 			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_RESULT, this.methodCall_proxyMethodCallResultHandler);
 			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_PROGRESS, this.methodCall_proxyMethodCallProgressHandler);
 			this._methodCall.removeEventListener(ProxyMethodCallEvent.PROXY_METHOD_CALL_EXCEPTION, this.methodCall_proxyMethodCallExceptionHandler);
 			this._proxy.removeEventListener(ProxyErrorEvent.COMMUNICATION_ERROR, this.proxy_errorHandler);
 			this._proxy.removeEventListener(ProxyErrorEvent.SECURITY_ERROR, this.proxy_errorHandler);
 			this._proxy.removeEventListener(ProxyErrorEvent.IO_ERROR, this.proxy_errorHandler);
-			this._arguments = null;
 			this._methodName = null;
 			this._methodCall = null;
+			this._arguments = null;
 			this._proxy = null;
 		}
 
